@@ -1,0 +1,221 @@
+STATISTICS DAY 2
+
+1. OVERVIEW
+
+Day 2 started with a revision of the Day 1 concepts and continued with
+important statistical topics such as population, sample, sampling methods,
+census, sampling bias, probability, skewness, quartiles, and correlation.
+
+2. DAY 1 REVISION
+
+The Day 1 concepts were revised, including types of statistics, types of
+data, measurement scales, measures of variability, outliers, and descriptive
+statistics.
+
+Example:
+Using mean, median, and standard deviation to understand a company's
+sales dataset.
+
+3. POPULATION
+
+Population refers to the complete group of individuals or observations that
+an analyst wants to study.
+
+Example:
+All customers of a company are considered the population when studying
+customer satisfaction.
+
+4. SAMPLE
+
+A sample is a smaller group selected from a population for analysis.
+
+Example:
+Selecting 500 customers from all customers to conduct a satisfaction survey.
+
+5. PARAMETER
+
+A parameter is a numerical value that describes the entire population.
+
+Example:
+The average salary of all employees in a company is a population parameter.
+
+6. STATISTIC
+
+A statistic is a numerical value calculated from a sample.
+
+Example:
+The average salary calculated from 100 selected employees is a statistic.
+
+7. SAMPLING
+
+Sampling is the process of selecting a smaller group from a population for
+analysis.
+
+Example:
+Instead of asking every customer for feedback, a company selects 1,000
+customers and collects their opinions.
+
+8. SAMPLING METHODS
+
+Simple Random Sampling
+
+Every member of the population has an equal chance of being selected.
+
+Example:
+Randomly selecting 100 customer IDs from a customer database.
+
+Systematic Sampling
+
+Members are selected at a fixed interval from a list.
+
+Example:
+Selecting every 10th customer from a customer list.
+
+Stratified Sampling
+
+The population is divided into groups, and samples are selected from each
+group.
+
+Example:
+Selecting employees from different departments such as HR, Sales, and IT.
+
+9. CENSUS VS SAMPLING
+
+Census
+
+A census collects information from every member of the population.
+
+Example:
+A company asks every employee to complete a survey.
+
+Sampling
+
+Sampling collects information from only a selected portion of the population.
+
+Example:
+A company selects 200 employees to complete the survey.
+
+Sampling is generally faster, less expensive, and easier to manage than a
+census.
+
+10. SAMPLING BIAS
+
+Sampling bias occurs when the selected sample does not properly represent
+the population.
+
+Example:
+A company wants to understand the opinions of all customers but surveys
+only premium customers. The results may not represent regular customers.
+
+11. PROBABILITY
+
+Probability measures how likely an event is to occur.
+
+Example:
+When tossing a fair coin, the probability of getting Heads is 1/2 or 50%.
+
+12. TYPES OF PROBABILITY
+
+Joint Probability
+
+Joint probability is the probability of two events occurring together.
+
+Example:
+Finding the probability that a customer is both a Premium Member and a
+Product Buyer.
+
+Marginal Probability
+
+Marginal probability is the probability of a single event without
+considering another event.
+
+Example:
+Finding the probability that a customer is a Premium Member.
+
+13. SKEWNESS
+
+Skewness describes the asymmetry or imbalance of a data distribution.
+
+Symmetric Distribution
+
+The data is distributed relatively equally on both sides.
+
+Example:
+A dataset where values are balanced around the center.
+
+Positive Skewness
+
+The distribution has a longer tail toward the right side.
+
+Example:
+Income data can be positively skewed because a small number of people
+may have very high incomes.
+
+Negative Skewness
+
+The distribution has a longer tail toward the left side.
+
+Example:
+If most students score very high but a few students score very low,
+the marks may be negatively skewed.
+
+14. QUARTILES
+
+Quartiles divide an ordered dataset into four parts.
+
+Q1 – First Quartile
+Approximately 25% of the data falls below Q1.
+
+Q2 – Second Quartile
+Approximately 50% of the data falls below Q2. Q2 is also the Median.
+
+Q3 – Third Quartile
+Approximately 75% of the data falls below Q3.
+
+Example:
+Quartiles can be used to divide employee salaries into lower, middle,
+and higher salary groups.
+
+15. CORRELATION
+
+Correlation measures the strength and direction of the relationship between
+two variables.
+
+Positive Correlation
+
+When one variable increases, the other variable tends to increase.
+
+Example:
+As study hours increase, exam marks may also increase.
+
+Negative Correlation
+
+When one variable increases, the other variable tends to decrease.
+
+Example:
+As product price increases, the number of units sold may decrease.
+
+No Correlation
+
+There is little or no relationship between two variables.
+
+Example:
+A person's shoe size and their exam marks generally have no meaningful
+relationship.
+
+16. LEARNING OUTCOME
+
+By the end of Day 2, I gained a better understanding of populations,
+samples, sampling methods, probability, skewness, quartiles, and correlation.
+
+I also learned how these concepts are applied to real-world data analysis
+and how they help analysts make meaningful conclusions from data.
+
+17. CONCLUSION
+
+Day 2 strengthened the statistical foundation learned on Day 1 and
+introduced important concepts used in practical Data Analysis.
+
+These concepts will help me understand datasets, select appropriate samples,
+identify data patterns, understand relationships between variables, and
+support data-driven decision-making.

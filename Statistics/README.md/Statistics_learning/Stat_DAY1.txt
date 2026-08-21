@@ -1,0 +1,221 @@
+ STATISTICS DAY 1
+
+
+1. OVERVIEW
+
+Day 1 focused on the basic concepts of Statistics and their importance in
+Data Analysis. The session covered types of statistics, types of data,
+measurement scales, variability, outliers, and descriptive statistical
+functions.
+
+
+2. WHAT IS STATISTICS?
+
+Statistics is the process of collecting, organizing, analyzing, interpreting,
+and presenting data to understand information and support decision-making.
+
+Example:
+A company analyzes its monthly sales data to find the average sales and
+identify which month had the highest sales.
+
+
+3. TYPES OF STATISTICS
+
+Descriptive Statistics
+
+Descriptive Statistics summarizes and describes the data that has already
+been collected.
+
+Example:
+Finding the average marks of 50 students in a class.
+
+
+Inferential Statistics
+
+Inferential Statistics uses sample data to make conclusions or predictions
+about a larger population.
+
+Example:
+Surveying 500 customers to understand the satisfaction level of all customers.
+
+
+4. TYPES OF DATA
+
+Qualitative Data
+
+Qualitative data describes categories or qualities rather than numerical
+measurements.
+
+Example:
+Product color, customer type, or department name.
+
+
+Quantitative Data
+
+Quantitative data represents numerical values that can be counted or measured.
+
+Example:
+Sales amount, age, salary, or number of products sold.
+
+
+Discrete Data
+
+Discrete data consists of countable values, usually in whole numbers.
+
+Example:
+Number of customers = 150.
+
+
+Continuous Data
+
+Continuous data can take any value within a given range.
+
+Example:
+A person's height = 165.5 cm.
+
+
+5. MEASUREMENT SCALES
+
+Nominal
+
+Nominal data represents categories without any specific order.
+
+Example:
+Product type: Shirt, Shoes, Watch.
+
+
+Ordinal
+
+Ordinal data represents categories that have a meaningful order.
+
+Example:
+Customer rating: Poor, Average, Good, Excellent.
+
+
+Interval
+
+Interval data has meaningful differences between values but does not have
+a true zero.
+
+Example:
+Temperature measured in Celsius.
+
+
+Ratio
+
+Ratio data has meaningful differences and a true zero.
+
+Example:
+Age, height, weight, or sales amount.
+
+
+6. MEASURES OF VARIABILITY
+
+Measures of variability show how spread out the values are in a dataset.
+
+Range
+
+Range is the difference between the highest and lowest values.
+
+Example:
+Sales = 100, 150, 200
+Range = 200 - 100 = 100.
+
+
+Variance
+
+Variance measures how far the values are spread from the mean.
+
+Example:
+If employee salaries are very different from the average salary, the
+variance will be higher.
+
+
+Standard Deviation
+
+Standard deviation shows the typical amount by which values differ from
+the mean.
+
+Example:
+If students' marks are close to the average, the standard deviation is low.
+
+
+Interquartile Range (IQR)
+
+IQR measures the spread of the middle 50% of the data.
+
+Example:
+IQR can be used to understand the central spread of employee salaries.
+
+
+7. OUTLIERS
+
+An outlier is a value that is unusually high or low compared with the other
+values in a dataset.
+
+Example:
+Monthly sales are 20, 22, 25, 24, and 200 units. Here, 200 may be an outlier.
+
+Outliers can affect statistical calculations such as the mean, so analysts
+need to identify and investigate them.
+
+
+8. DESCRIPTIVE STATISTICS FUNCTIONS
+
+Mean
+The average value of a dataset.
+
+Example:
+10, 20, 30 → Mean = 20.
+
+
+Median
+The middle value after arranging the data.
+
+Example:
+10, 20, 30 → Median = 20.
+
+
+Mode
+The value that occurs most frequently.
+
+Example:
+10, 20, 20, 30 → Mode = 20.
+
+
+Minimum
+The smallest value in a dataset.
+
+Example:
+10, 20, 30 → Minimum = 10.
+
+
+Maximum
+The largest value in a dataset.
+
+Example:
+10, 20, 30 → Maximum = 30.
+
+
+Count
+The number of values or observations in a dataset.
+
+Example:
+5 customer records → Count = 5.
+
+
+9. LEARNING OUTCOME
+
+By the end of Day 1, I gained a basic understanding of Statistics and
+learned how statistical measures can be used to summarize, analyze, and
+interpret datasets.
+
+These concepts provide a strong foundation for further learning in
+Data Analysis.
+
+
+10. CONCLUSION
+
+Day 1 helped me understand how Statistics is used to describe data, measure
+variation, identify unusual values, and generate meaningful information
+from datasets.
