@@ -33334,6 +33334,19 @@ INNER JOIN doctor_name ,doctor_id,hospital_id
 doctors D ON h.hospital_id = d.hospital_id
 GROUP BY d.hospital_id; */
 
+/*SELECT hospital_name, COUNT(doctor_id)
+From hospitals
+INNER JOIN first_name,doctor_id,hospital_id
+doctors ON hospital_id = hospital_id
+GROUP BY hospital_id;*/
+
+SELECT hospitals.hospital_name,
+       COUNT(doctors.doctor_id) AS doctor_count
+FROM hospitals
+INNER JOIN doctors
+    ON hospitals.hospital_id = doctors.hospital_id
+GROUP BY hospitals.hospital_id, hospitals.hospital_name;
+
 # the following is correct query
 SELECT h.hospital_name, COUNT(d.doctor_id) AS doctor_count
 FROM hospitals h
