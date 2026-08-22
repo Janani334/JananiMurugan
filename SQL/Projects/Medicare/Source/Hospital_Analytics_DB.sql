@@ -33286,7 +33286,7 @@ GROUP BY hospital_name;
 SELECT bed_capacity FROM hospitals WHERE bed_capacity>300;
 
 # 12. SHOW ME ONLY SPECIALIZATION THAT HAVE MORE THAN 20 doctors
-# (i). to dind count of doctor in each specialization
+# (i). to find count of doctor in each specialization
 # (ii). then filter only count> 20
 
 SELECT COUNT(doctor_id) from doctors GROUP BY specialization;
@@ -33296,7 +33296,7 @@ SELECT specialization,COUNT(doctor_id) FROM doctors GROUP BY specialization HAVI
 # 1. where - for filter individual rows
 # 2. having - after aggreation
 
-# 13. show me the top 5 specializations baesd on number of doctors?
+# 13. show me the top 5 specializations based on number of doctors?
 SELECT COUNT(specialization),COUNT(doctor_id) FROM doctors 
 GROUP BY specialization
 ORDER BY COUNT(doctor_id) DESC
@@ -33326,20 +33326,8 @@ RIGHT JOIN departments
 ON departments.hospital_id=hospitals.hospital_id;
 
 # 18.08.2026 TASK
+
 # 1. How many doctors does each hospital have?
-# error in the followung querry
-/* SELECT h.hospital_name,COUNT(d.doctor_id)
-FROM hospitals h
-INNER JOIN doctor_name ,doctor_id,hospital_id
-doctors D ON h.hospital_id = d.hospital_id
-GROUP BY d.hospital_id; */
-
-/*SELECT hospital_name, COUNT(doctor_id)
-From hospitals
-INNER JOIN first_name,doctor_id,hospital_id
-doctors ON hospital_id = hospital_id
-GROUP BY hospital_id;*/
-
 SELECT hospitals.hospital_name,
        COUNT(doctors.doctor_id) AS doctor_count
 FROM hospitals
@@ -33347,43 +33335,70 @@ INNER JOIN doctors
     ON hospitals.hospital_id = doctors.hospital_id
 GROUP BY hospitals.hospital_id, hospitals.hospital_name;
 
-# the following is correct query
-SELECT h.hospital_name, COUNT(d.doctor_id) AS doctor_count
-FROM hospitals h
-INNER JOIN doctors d
-    ON h.hospital_id = d.hospital_id
-GROUP BY h.hospital_id, h.hospital_name;
-
 # 2. which hospitals have more than 20 doctors
-/* SELECT hospital_name,COUNT(doctor_id)
-FROM hospitals 
-INNER JOIN doctor_name ,doctor_id,hospital_id
-ON hospitals.hospital_id = doctors.hospital_id
-GROUP BY doctors.hospital_id
-HAVING COUNT(doctors.doctor_id)>20; */
-SELECT h.hospital_name, COUNT(d.doctor_id) AS doctor_count
-FROM hospitals h
-INNER JOIN doctors d
-    ON h.hospital_id = d.hospital_id
-GROUP BY h.hospital_id, h.hospital_name
-HAVING COUNT(d.doctor_id)>20;
+SELECT hospitals.hospital_name,
+       COUNT(doctors.doctor_id) AS doctor_count
+FROM hospitals
+INNER JOIN doctors
+    ON hospitals.hospital_id = doctors.hospital_id
+GROUP BY hospitals.hospital_id, hospitals.hospital_name
+HAVING COUNT(doctor_id)>20;
 
 # 3. which specialization has highes number of doctors?
+SELECT specialization,
+COUNT(doctor_id) AS total_doctors
+FROM doctors
+GROUP BY specialization
+ORDER BY total_doctors DESC
+LIMIT 1;
 
 # 4. what is avg consulation_fee by specialization
-SELECT AVG consultation_fee
+SELECT specialization,
+ ROUND(avg(consultation_fee),3) AS avg_sonsultation_fee 
+ from doctors
+group by specialization;
 
-# 5.  how many appoinments does each doctor have?
+# 5.  how many appoinments does each doctor have? (done by me!!)
+SELECT doctor_id ,COUNT(appointment_id) AS total_appointments
+from appointments
+group by doctor_id;
 
-# COO - 6. Calculate the number of doctors in each hospital.?
+# COO - 6. Calculate the number of doctors in each hospital.? (done by me!!)
+SELECT hospital_name, COUNT(doctor_id) as total_doctors
+from hospitals
+INNER JOIN doctors
+ON hospitals.hospital_id = doctors.hospital_id
+group by hospitals.hospital_id, doctors.hospital_id;
 
-# CMO - 7. Find the top 5 specializations by doctor count.?
+# CMO - 7. Find the top 5 specializations by doctor count.? (almost done by me)
+SELECT specialization, 
+COUNT(doctor_id) AS Total_Doctors
+FROM doctors
+GROUP BY specialization
+ORDER BY Total_Doctors DESC
+LIMIT 5;
 
-# Hospital Administrator - 8. Find the number of departments in each hospital.?
+# Hospital Administrator - 8. Find the number of departments in each hospital.?(done by me)
+SELECT hospital_name,
+COUNT(department_id) AS num_of_departments
+FROM hospitals
+INNER JOIN departments
+ON hospitals.hospital_id = departments.hospital_id
+GROUP BY hospitals.hospital_id,departments.hospital_id;
 
-# CMO - 9.Find the average consultation fee by specialization.?
+# CMO - 9.Find the average consultation fee by specialization.? (done by me)
+SELECT specialization, avg(consultation_fee) AS avg_consultation_fee
+from doctors
+GROUP BY specialization;
 
-# Operations - 10. Find doctors with more than 50 appointments.?
+# Operations - 10. Find doctors with more than 50 appointments.? (almost done by me)
+SELECT doctors.doctor_id,
+COUNT(appointments.appointment_id) AS Total_Appointments
+FROM doctors
+INNER JOIN appointments
+ON doctors.doctor_id = appointments.doctor_id
+GROUP BY doctors.doctor_id,appointments.doctor_id
+HAVING COUNT(appointments.appointment_id)>50;
 
 # Identify: - the followings are to find KPI
 /*
