@@ -599,15 +599,6 @@ INSERT INTO Doctors (doctor_id, first_name, last_name, gender, specialization, d
 ALTER TABLE Departments
 MODIFY COLUMN head_doctor_id VARCHAR(8) NULL;
 
- # conver the incorrect date into correct one
-/* SELECT
-    '11-05-2019' AS incorrect_date,
-    CASE
-         WHEN '11-05-2019' LIKE '__-__-____'
-        THEN STR_TO_DATE('11-05-2019', '%d-%m-%Y')
-        ELSE '11-05-2019'
-    END AS corrected_date; */
-    
 # assigning fk to the department table from doctor table
 ALTER TABLE DEPARTMENTS ADD CONSTRAINT fk_departments_doctors FOREIGN KEY(head_doctor_id) REFERENCES doctors(doctor_id);
 
@@ -3485,6 +3476,23 @@ DROP FOREIGN KEY fk_admissions_hospitals;
 ALTER TABLE appointments 
 ADD CONSTRAINT fk_appointments_hospitals 
 FOREIGN KEY (hospital_id) REFERENCES hospitals(hospital_id);
+
+/* missing 200 vvalues to find!!
+SET SESSION cte_max_recursion_depth = 5100;
+WITH RECURSIVE all_ids AS (
+    SELECT 1 AS n
+    UNION ALL
+    SELECT n + 1
+    FROM all_ids
+    WHERE n < 5100
+)
+SELECT CONCAT('AP', LPAD(n, 6, '0')) AS missing_appointment_id
+FROM all_ids
+WHERE CONCAT('AP', LPAD(n, 6, '0')) NOT IN (
+    SELECT appointment_id
+    FROM appointments
+)
+ORDER BY n; */
  
 # inserting values into appointments table
 INSERT INTO Appointments (appointment_id, patient_id, doctor_id, hospital_id, appointment_date, appointment_time, status, reason_for_visit, created_at) VALUES
@@ -11159,6 +11167,7 @@ INSERT INTO Admissions (admission_id, patient_id, hospital_id, department_id, ad
 ('AD02498', 'PT000066', 'H009', 'D012', 'DR0402', 'RM00223', '2024-10-23', NULL, 'Emergency', 'Admitted'),
 ('AD02499', 'PT001565', 'H011', 'D014', 'DR0107', 'RM00306', '2025-02-01', '2025-02-02', 'Emergency', 'Discharged'),
 ('AD02500', 'PT000072', 'H019', 'D025', 'DR0374', 'RM00535', '2024-11-01', '2024-11-08', 'Planned', 'Discharged');
+select count(*) from admissions;
 
 # treatments table creation with pk and 3 fk
 CREATE TABLE treatments (
@@ -33213,6 +33222,21 @@ INSERT INTO Payments (payment_id, bill_id, patient_id, payment_date, payment_amo
 ('PY004999', 'BL003579', 'PT001269', '2024-10-01', 23667.85, 'Insurance Claim', 'Success'),
 ('PY005000', 'BL000343', 'PT000214', '2024-08-21', 19940.26, 'Net Banking', 'Success');
 
+# DROP TABLE IF EXISTS Payments;
+# DROP TABLE IF EXISTS Billing;
+# DROP TABLE IF EXISTS Employees;
+# DROP TABLE IF EXISTS Laboratory;
+# DROP TABLE IF EXISTS Pharmacy;
+# DROP TABLE IF EXISTS Medicines;
+# DROP TABLE IF EXISTS Insurance;
+# DROP TABLE IF EXISTS Treatments;
+# DROP TABLE IF EXISTS Admissions;
+# DROP TABLE IF EXISTS Appointments;
+# DROP TABLE IF EXISTS Rooms;
+# DROP TABLE IF EXISTS Patients;
+# DROP TABLE IF EXISTS Departments;
+# DROP TABLE IF EXISTS Doctors;
+
 # counts the total rows in a table
 select count(*) from hospitals;
 select count(*) from departments;
@@ -33229,6 +33253,266 @@ select count(*) from laboratory;
 select count(*) from employees;
 select count(*) from billing;
 select count(*) from payments;
+
+# Display all the tables 
+SHOW TABLES;
+
+# It is similar to Describe but it will display the exact query which has been written while creating
+SHOW CREATE TABLE Doctors;
+
+# This will return the databases that are in use 
+SELECT DATABASE();
+
+# To identify the NULL values in tables
+SELECT *
+FROM patients
+WHERE patient_id IS NULL
+   OR first_name IS NULL
+   OR last_name IS NULL
+   OR gender IS NULL
+   OR date_of_birth IS NULL
+   OR age IS NULL
+   OR city IS NULL
+   OR state IS NULL
+   OR phone_number IS NULL
+   OR email IS NULL
+   OR blood_group IS NULL
+   OR registration_date IS NULL;
+   
+# To identify the duplicates
+SELECT department_id, COUNT(*)
+FROM doctors
+GROUP BY department_id
+HAVING COUNT(*) > 1;
+
+# To retrieve all datas top 5
+SELECT * FROM hospitals LIMIT 5;
+
+# Duplicate check - Hospital
+SELECT hospital_id, COUNT(*) AS Count
+FROM hospitals
+GROUP BY hospital_id
+HAVING COUNT(*) = 1;
+
+# Check null values - Department
+SELECT * FROM departments WHERE head_doctor_id IS NULL;
+
+SELECT * FROM doctors;
+
+# Display the first occurence of data 
+SELECT DISTINCT gender FROM doctors;
+
+# Count the gender in different formats and group them 
+SELECT gender, COUNT(*) 
+FROM doctors 
+group by gender;
+
+SELECT gender,doctor_id FROM doctors;
+
+# Preview the male and female and change them 
+SELECT gender, 
+CASE 
+WHEN LOWER(TRIM(gender)) IN ('male','m')
+THEN 'Male'
+WHEN LOWER(TRIM(gender)) IN ('female','f')
+THEN 'Female'
+ELSE gender
+END AS Cleaned_gender
+FROM doctors;
+
+Select Cleaned_gender FROM (
+Select 
+CASE 
+WHEN LOWER(TRIM(gender)) IN ('male','m')
+THEN 'Male'
+WHEN LOWER(TRIM(gender)) IN ('female','f')
+THEN 'Female'
+ELSE gender
+END AS Cleaned_gender
+FROM doctors
+) AS d;
+
+# set sql_SAFE_UPDATES=0;
+
+# =========================================================================================================================================================================================
+# Data Profiling
+#====================================================================================================================================================================================================
+
+# 1. Departments table- head_doctor_id is null
+SELECT * from departments where head_doctor_id is null ;
+
+# 2. Doctors - gender is in different formats
+SELECT DISTINCT gender, COUNT(*)
+from doctors
+Group by gender;
+
+# 3. Doctors - department_id is blank
+SELECT * FROM doctors where department_id IS NULL;
+
+# 4. Doctors - email is blank
+SELECT * FROM doctors where email IS NULL;
+# 5. Check email format
+SELECT * FROM doctors where email NOT REGEXP '^[A-Za-z0-9_%.-]+@[A-Za-z0-9-_.]+\\.[A-Za-z]{2,}$';
+
+# 6. Patients - Traling and leading spaces in first name
+SELECT * from patients where first_name <> ltrim(first_name);
+
+# 7. Patients - gender in different formats
+SELECT gender, count(*) 
+FROM patients 
+group by gender;
+
+# 8. Patient - Check for email blanks
+SELECT * FROM patients where email is null;
+
+# 9. to check the email format 
+SELECT * from patients where email not regexp '^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\\.[a-zA-Z]{2,}';
+SELECT * from patients where email NOT like '%@%.%'; # this is another method to find invalid email, % includes any character
+
+# 10. Admissions - check for blanks in department_id
+SELECT * from admissions where department_id is null;
+
+# 11. Admissions - check for blanks in discharge_date
+SELECT * from admissions where discharge_date is null;
+
+# 12. Treatments - check for blanks in Admission_id
+SELECT  * FROM treatments where Admission_id is null;
+
+# 13. Insurance - check for blanks in insurance_provider
+SELECT  * FROM insurance where insurance_provider is null;
+
+# 14. Employee gender different formats 
+SELECT gender, count(*) 
+from employees
+group by gender;
+
+# 15. Employees - blanks in department_id
+SELECT * FROM employees where department_id is null;
+
+# 16. Billing - blanks in admission_id
+SELECT * FROM billing where admission_id is null;
+
+# 17. Employees - blanks in appointment_id
+SELECT * FROM billing where appointment_id is null;
+
+# ==============================================================================================================================================================================================
+# Data Cleaning
+#=====================================================================================================================================================================================================
+
+# 2 . Update the changed male and female column in the tables - doctors
+ UPDATE doctors 
+ SET gender=
+ CASE 
+WHEN LOWER(TRIM(gender)) IN ('male','m')
+THEN 'Male'
+WHEN LOWER(TRIM(gender)) IN ('female','f')
+THEN 'Female'
+ELSE gender
+END;
+
+# 5. Doctors - Cleaning the emails which are in wrong format
+# This is previewing
+SELECT 
+email AS old_email,
+CASE
+WHEN email LIKE '%gmail.com' AND email NOT LIKE '%@%'
+THEN REPLACE(email,'gmail.com','@gmail.com') 
+WHEN email LIKE '%@gmail'
+THEN REPLACE(email,'@gmail','@gmail.com') # THEN CONCAT(email,'.com')
+WHEN email LIKE '%@@gmail.com' 
+THEN REPLACE(email,'@@gmail.com','@gmail.com')
+ELSE email
+END AS new_email
+FROM doctors;
+
+# 3. Updating
+update doctors 
+SET email=
+CASE
+WHEN email LIKE '%gmail.com' AND email NOT LIKE '%@%'
+THEN REPLACE(email,'gmail.com','@gmail.com') 
+WHEN email LIKE '%@gmail'
+THEN REPLACE(email,'@gmail','@gmail.com') # THEN CONCAT(email,'.com')
+WHEN email LIKE '%@@gmail.com' 
+THEN REPLACE(email,'@@gmail.com','@gmail.com')
+ELSE email
+END 
+WHERE email not like '%@%.%' or
+	email like '%@@%.%';
+#SET SQL_SAFE_UPDATES = 0; - When using the Upadate query where condition is applicable for id alone but when we try to use other columns in where condition then it shows sql safe error so to fix it we use this query 
+
+# 6. Patients - Trim the first_name column
+UPDATE patients 
+SET first_name=ltrim(first_name)
+WHERE first_name <> LTRIM(first_name);
+
+# 7. Patients - gender in different format
+SELECT DISTINCT gender from patients;
+# Preview
+SELECT gender ,
+CASE
+WHEN lower(trim(gender)) in ('m','male')
+THEN 'Male'
+WHEN lower(trim(gender)) in ('f','female')
+THEN 'Female'
+END
+FROM patients;
+
+# 4. Update 
+update patients 
+set gender =
+CASE
+WHEN lower(trim(gender)) in ('m','male')
+THEN 'Male'
+WHEN lower(trim(gender)) in ('f','female')
+THEN 'Female'
+ELSE gender
+END;
+
+# 9. Patients - email format is not correct
+SELECT email AS old_email, 
+CASE
+WHEN email LIKE '%gmail.com' AND email not like '%@%'
+THEN REPLACE(email,'%gmail.com','%@gmail.com')
+WHEN email like '%gmail'
+then concat(email,'.com')
+else email
+end as new_email
+FROM patients;
+
+# 6. Update 
+UPDATE patients 
+set email=
+CASE
+WHEN email LIKE '%gmail.com' AND email not like '%@%'
+THEN REPLACE(email,'gmail.com','@gmail.com')
+WHEN email like '%gmail'
+then concat(email,'.com')
+else email
+end
+where email not like '%@%.%';
+
+# 14. Employee - gender in different format 
+UPDATE employees
+SET gender =
+CASE
+    WHEN LOWER(TRIM(gender)) IN ('male','m')
+    THEN 'Male'
+    WHEN LOWER(TRIM(gender)) IN ('female','f')
+    THEN 'Female'
+    ELSE gender
+END
+WHERE employee_id <> '';
+
+SELECT DISTINCT gender
+FROM employees;
+
+#===================================================================================================================================================================
+# Data Analysis
+#===================================================================================================================================================================
+# ex. List the unique hospital names 
+SELECT distinct hospital_name from Hospitals;
+
 
 # 17-08-2026 (monday)
 # coo asked how many hospitals does medicare operator?
@@ -33478,3 +33762,4 @@ ON hospitals.hospital_id = doctors.hospital_id
 GROUP BY hospitals.hospital_name 
 ORDER BY total_doctors DESC
 LIMIT 1;
+
