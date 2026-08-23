@@ -33267,7 +33267,7 @@ SELECT SUM(bed_capacity) AS bed_capacity from hospitals;
 # 6. avg consultation_fee 
 SELECT AVG(consultation_fee) AS consultation_fee FROM doctors; 
 # 6.1 display as from 912.649200 to 921.64
-SELECT ROUND(AVG(consultation_fee), 2) AS consultation_fee FROM doctors; 
+SELECT ROUND(AVG(consultation_fee), 2) AS avg_consultation_fee FROM doctors; 
 
 # 7. what is the lowest consultation_fee?
 SELECT MIN(consultation_fee) FROM doctors;
@@ -33276,7 +33276,7 @@ SELECT MIN(consultation_fee) FROM doctors;
 SELECT MAX(bed_capacity) FROM hospitals;
 
 # 9. How many doctors are there in each specialization?
-SELECT COUNT(*) FROM doctors GROUP BY specialization;
+SELECT specialization, COUNT(*) FROM doctors GROUP BY specialization;
 
 # 10. how many beds each hospital have?
 SELECT SUM(bed_capacity) FROM hospitals 
@@ -33297,7 +33297,7 @@ SELECT specialization,COUNT(doctor_id) FROM doctors GROUP BY specialization HAVI
 # 2. having - after aggreation
 
 # 13. show me the top 5 specializations based on number of doctors?
-SELECT COUNT(specialization),COUNT(doctor_id) FROM doctors 
+SELECT specialization, COUNT(doctor_id) FROM doctors 
 GROUP BY specialization
 ORDER BY COUNT(doctor_id) DESC
 LIMIT 5; 
@@ -33322,12 +33322,12 @@ GROUP BY doctors.hospital_id;
 # 16. Show me every hospitals, even if it currently has no department?
 SELECT hospitals.hospital_name, departments.department_name
 FROM hospitals
-RIGHT JOIN departments
-ON departments.hospital_id=hospitals.hospital_id;
+LEFT JOIN departments
+ON hospitals.hospital_id = departments.hospital_id;
 
 # 18.08.2026 TASK
 
-# 1. How many doctors does each hospital have?
+# 17. How many doctors does each hospital have?
 SELECT hospitals.hospital_name,
        COUNT(doctors.doctor_id) AS doctor_count
 FROM hospitals
@@ -33335,7 +33335,7 @@ INNER JOIN doctors
     ON hospitals.hospital_id = doctors.hospital_id
 GROUP BY hospitals.hospital_id, hospitals.hospital_name;
 
-# 2. which hospitals have more than 20 doctors
+# 18. which hospitals have more than 20 doctors
 SELECT hospitals.hospital_name,
        COUNT(doctors.doctor_id) AS doctor_count
 FROM hospitals
@@ -33344,7 +33344,7 @@ INNER JOIN doctors
 GROUP BY hospitals.hospital_id, hospitals.hospital_name
 HAVING COUNT(doctor_id)>20;
 
-# 3. which specialization has highes number of doctors?
+# 19. which specialization has highes number of doctors?
 SELECT specialization,
 COUNT(doctor_id) AS total_doctors
 FROM doctors
@@ -33352,25 +33352,25 @@ GROUP BY specialization
 ORDER BY total_doctors DESC
 LIMIT 1;
 
-# 4. what is avg consulation_fee by specialization
+# 20. what is avg consulation_fee by specialization
 SELECT specialization,
  ROUND(avg(consultation_fee),3) AS avg_sonsultation_fee 
  from doctors
 group by specialization;
 
-# 5.  how many appoinments does each doctor have? (done by me!!)
+# 21.  how many appoinments does each doctor have? (done by me!!)
 SELECT doctor_id ,COUNT(appointment_id) AS total_appointments
 from appointments
 group by doctor_id;
 
-# COO - 6. Calculate the number of doctors in each hospital.? (done by me!!)
+# COO - 22. Calculate the number of doctors in each hospital.? (done by me!!)
 SELECT hospital_name, COUNT(doctor_id) as total_doctors
 from hospitals
 INNER JOIN doctors
 ON hospitals.hospital_id = doctors.hospital_id
 group by hospitals.hospital_id, doctors.hospital_id;
 
-# CMO - 7. Find the top 5 specializations by doctor count.? (almost done by me)
+# CMO - 23. Find the top 5 specializations by doctor count.? (almost done by me)
 SELECT specialization, 
 COUNT(doctor_id) AS Total_Doctors
 FROM doctors
@@ -33378,7 +33378,7 @@ GROUP BY specialization
 ORDER BY Total_Doctors DESC
 LIMIT 5;
 
-# Hospital Administrator - 8. Find the number of departments in each hospital.?(done by me)
+# Hospital Administrator - 24. Find the number of departments in each hospital.?(done by me)
 SELECT hospital_name,
 COUNT(department_id) AS num_of_departments
 FROM hospitals
@@ -33386,12 +33386,12 @@ INNER JOIN departments
 ON hospitals.hospital_id = departments.hospital_id
 GROUP BY hospitals.hospital_id,departments.hospital_id;
 
-# CMO - 9.Find the average consultation fee by specialization.? (done by me)
+# CMO - 25.Find the average consultation fee by specialization.? (done by me)
 SELECT specialization, avg(consultation_fee) AS avg_consultation_fee
 from doctors
 GROUP BY specialization;
 
-# Operations - 10. Find doctors with more than 50 appointments.? (almost done by me)
+# Operations - 26. Find doctors with more than 50 appointments.? (almost done by me)
 SELECT doctors.doctor_id,
 COUNT(appointments.appointment_id) AS Total_Appointments
 FROM doctors
@@ -33409,28 +33409,72 @@ Measure
 Grouping
 Filter */
 
-# 11
-SELECT D.department_name,d.first_name,d.consultaion_fee,
-ROW_NUMBER() OVER
-(ORDER BY consultation_fee) AS RANK
-FROM doctors;
-
-#  12
-SELECT D.department_name,d.first_name,d.consultaion_fee,
+# 27. Rank the consultation_fee from higher to lower
+SELECT 
+doctors.first_name,
+doctors.specialization,
+doctors.consultation_fee,
 ROW_NUMBER() OVER (
-ORDER BY consultation_fee DESC) 
+ORDER BY doctors.consultation_fee DESC
+)   AS rnk
 FROM doctors;
 
-# 13
-SELECT D.department_name,d.first_name,d.consultaion_fee,
-ROW_NUMBER() OVER (PARTITION BY D.department_name
-ORDER BY consultation_fee DESC) 
+# 28. Rank the consultation_fee from higher to lower based on specialization
+SELECT doctors.first_name, doctors.specialization, doctors.consultation_fee,
+ROW_NUMBER() OVER (
+PARTITION BY doctors.specialization ORDER BY doctors.consultation_fee DESC 
+) AS rnk
 FROM doctors;
 
-# 14. here use the above query RANK() instead of ROW_NUMBER
+# 29. Rank the consultaion fee from higher to lower based on specialization (NOTE: rank will use the same numbers for same values)
+SELECT doctors.first_name, doctors.specialization, doctors.consultation_fee, 
+RANK() OVER (
+PARTITION BY doctors.specialization ORDER BY doctors.consultation_fee DESC
+) AS rnk
+FROM doctors;
 
-# 15. using LAG(column_name) for display previous/before rows output
+# 30. Using LAG(column_name) for display previous DATA
+SELECT doctors.first_name, doctors.specialization, doctors.consultation_fee,
+LAG(doctors.consultation_fee) 
+OVER (ORDER BY doctors.consultation_fee DESC) AS previous_fee
+FROM doctors;
 
-# 16. used LEAD() for future/next rows output
+# 31. Using LEAD(COLUMNN_NAME) for display after the data
+SELECT doctors.first_name, doctors.specialization, doctors.consultation_fee,
+LEAD(doctors.consultation_fee) 
+OVER (ORDER BY doctors.consultation_fee DESC) AS after_fee
+FROM doctors;
 
-# 17. Show me the top 3 highest-paid consultation doctors within each department
+# 32. Rank the data based on consultation_fee by departments
+SELECT departments.department_name, doctors.first_name,doctors.consultation_fee,
+ROW_NUMBER() OVER (
+PARTITION BY departments.department_name ORDER BY doctors.consultation_fee DESC
+) AS rnk
+FROM departments 
+INNER JOIN doctors
+ON doctors.department_id = departments.department_id;
+
+# 33. Rank the data by consultation_fee
+SELECT doctors.first_name, doctors.consultation_fee,
+RANK() OVER(
+ORDER BY doctors.consultation_fee DESC
+) AS rnk
+FROM doctors;
+
+# 34. Top 5 hospital name based on number of doctors
+SELECT hospitals.hospital_name, COUNT(doctors.doctor_id) AS count_of_doctors
+FROM hospitals
+INNER JOIN doctors
+ON hospitals.hospital_id = doctors.hospital_id
+GROUP BY hospitals.hospital_name
+ORDER BY COUNT(doctors.doctor_id) DESC
+LIMIT 5;
+
+# Display hospital with most doctors
+SELECT hospitals.hospital_name, COUNT(doctors.doctor_id) AS total_doctors
+FROM hospitals
+INNER JOIN doctors
+ON hospitals.hospital_id = doctors.hospital_id
+GROUP BY hospitals.hospital_name 
+ORDER BY total_doctors DESC
+LIMIT 1;

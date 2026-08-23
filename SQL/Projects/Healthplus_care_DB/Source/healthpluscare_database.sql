@@ -41169,7 +41169,7 @@ SELECT * FROM consultations WHERE consultation_mode = 'Telemedicine';
 SELECT consultation_id FROM consultations WHERE consultation_mode = 'Telemedicine';
 
 # 7. Display all lab tests whose status is Completed.
-SELECT member_id from lab_tests WHERE test_status = 'completed';
+SELECT * from lab_tests WHERE test_status = 'completed';
 
 # 8. Find all payments made through UPI.
 SELECT * FROM payments WHERE payment_mode = 'UPI';
@@ -41232,9 +41232,54 @@ ON feedback.consultation_id = consultations.consultation_id
 GROUP BY specialists.specialist_id, specialists.first_name, specialists.last_name;
 
 # 16. Find the total lab-test cost for each clinic.
-SELECT clinics.clinic_name, sum(lab_tests.test_cost) AS total_test_cost
+SELECT clinics.clinic_id,
+ clinics.clinic_name,
+ sum(lab_tests.test_cost) AS total_test_cost
 FROM clinics
 INNER JOIN lab_tests
 ON clinics.clinic_id = lab_tests.clinic_id
-GROUP BY clinics.clinic_name;
+GROUP BY clinics.clinic_id,
+clinics.clinic_name;
 
+# Medium — 17 to 24
+
+# 17. Find specialists who have conducted more than 50 consultations.
+SELECT specialists.specialist_id, COUNT(consultations.consultation_id) AS total_consultations
+FROM specialists
+INNER JOIN consultations
+ON specialists.specialist_id = consultations.specialist_id
+GROUP BY specialists.specialist_id
+HAVING COUNT(consultation_id)>50;
+
+# 18. Find members whose total billing amount is greater than ₹10,000.
+SELECT members.member_id,SUM(billing.total_amount) AS total_billing_amount
+FROM members
+INNER JOIN billing
+ON members.member_id = billing.member_id
+GROUP BY members.member_id
+HAVING SUM(billing.total_amount)>10000;
+
+# 19. Find the total payment amount for each payment mode.
+SELECT payments.payment_mode, SUM(payments.payment_amount)
+FROM payments
+GROUP BY payment_mode;
+
+# 20. Find the specialists whose consultation fee is higher than the average consultation fee of all specialists.
+SELECT specialist_id,
+       first_name,
+       last_name,
+       specialization,
+       consultation_fee
+FROM specialists
+WHERE consultation_fee > (
+    SELECT AVG(consultation_fee)
+    FROM specialists
+);
+
+# 21. Find the number of specialists working at each clinic, and display only clinics having more than 5 specialists.
+SELECT clinics.clinic_id, clinics.clinic_name,COUNT(specialists.specialist_id) AS total_specialists
+FROM clinics
+INNER JOIN specialists
+ON clinics.clinic_id = specialists.clinic_id
+GROUP BY clinics.clinic_id,clinics.clinic_name
+HAVING COUNT(specialists.specialist_id)>5;
