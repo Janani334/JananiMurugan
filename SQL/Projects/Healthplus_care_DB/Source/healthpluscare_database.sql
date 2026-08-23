@@ -41141,6 +41141,8 @@ SELECT COUNT(*) FROM billing;
 SELECT COUNT(*) FROM payments;
 SELECT COUNT(*) FROM feedback;
 
+DESCRIBE specialists;
+
 # 30  Questions and queries
 # Easy 1-8
 
