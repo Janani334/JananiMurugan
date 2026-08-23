@@ -33470,7 +33470,7 @@ GROUP BY hospitals.hospital_name
 ORDER BY COUNT(doctors.doctor_id) DESC
 LIMIT 5;
 
-# Display hospital with most doctors
+# 35. Display hospital with most doctors
 SELECT hospitals.hospital_name, COUNT(doctors.doctor_id) AS total_doctors
 FROM hospitals
 INNER JOIN doctors

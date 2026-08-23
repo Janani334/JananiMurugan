@@ -41283,3 +41283,33 @@ INNER JOIN specialists
 ON clinics.clinic_id = specialists.clinic_id
 GROUP BY clinics.clinic_id,clinics.clinic_name
 HAVING COUNT(specialists.specialist_id)>5;
+
+ /* 22. Find each specialist's consultation fee along with the consultation fee of the next specialist when 
+specialists are ordered from highest to lowest consultation fee.*/
+SELECT specialists.first_name, specialists.consultation_fee,
+LEAD (specialists.consultation_fee)
+OVER (ORDER BY specialists.consultation_fee DESC
+) AS next_consultation_fee
+FROM specialists;
+
+/* 23. Find each specialist's consultation fee along with the consultation fee of the previous specialist when 
+specialists are ordered from highest to lowest consultation fee. */
+SELECT specialists.specialist_id, specialists.consultation_fee,
+LAG(specialists.consultation_fee)
+OVER (ORDER BY specialists.consultaTion_fee DESC) AS previous_consultation_fee
+FROM specialists;
+
+#  24. Rank specialists based on their consultation fee from highest to lowest.
+SELECT specialists.specialist_id, specialists.first_name, specialists.consultation_fee,
+RANk() OVER(
+ORDER BY specialists.consultation_fee DESC
+) AS rnk
+FROM specialists;
+
+/* 25. Rank specialists based on their consultation fee
+ within each specialization, with the highest fee receiving rank 1. */
+ SELECT specialists.first_name, specialists.specialization, specialists.consultation_fee,
+ RANK() OVER(
+ PARTITION BY specialists.specialization ORDER BY  specialists.consultation_fee DESC
+ ) AS rnk
+ FROM specialists;
