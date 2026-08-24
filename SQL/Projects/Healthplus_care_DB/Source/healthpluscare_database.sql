@@ -41119,6 +41119,60 @@ VALUES
 ('FB02499', 'M000315', 'CN003988', '5', 'Excellent follow-up care', '2025-09-09'),
 ('FB02500', 'M000118', 'CN000848', '5', 'Average experience overall', '2025-04-19');
 
+#====================================================================================================================================================================================================
+# Data Profiling
+#===========================================================================================================================================================================================================
+# 1. Members - gender is in different format
+SELECT distinct gender from members;
+
+# 2. Members - email has blanks
+SELECT * from members where email is null;
+
+# 3. Members - emails are in different formats
+SELECT * from members where email not like '%@%.%';
+
+# 4. Claims - consultation_id is blank
+SELECT * from claims where consultation_id is null;
+
+# 5. Claims - insurance_provider is blank
+SELECT * from claims where insurance_provider is null;
+
+# 6. Billing - consultation_id is blank
+SELECT * from billing where consultation_id is null;
+
+# 7. Payments - Payment_mode is blank
+SELECT * FROM payments where payment_mode is null;
+
+#==================================================================================================================================
+# Data Cleaning
+#=======================================================================================================================================
+
+# 1. Members - gender is in different format
+UPDATE members
+set gender=
+CASE
+WHEN lower(trim(gender)) in ('male','m')
+THEN 'Male'
+WHEN lower(trim(gender)) in ('female','f')
+THEN 'Female'
+ELSE gender
+END;
+
+set sql_safe_updates=0;
+
+# 2. Members - email is in different format 
+update members 
+set email=
+CASE
+WHEN email like '%gmail' and email not like '%@%'
+THEN REPLACE(email,'gmail','@gmail')
+END
+where email not like '%@%.%';
+
+#=======================================================================================================================================
+#Data analysis
+#================================================================================================================================================
+
 # 22-08-2026 SQL PRACTICE QUERIES WITH QUESTIONS
 
 # COUNTS THE TOTAL NO.OF VALUES OR ROWS IN A TABLE (THE FOLLOWINGS ARE REPRESENTING THE TOTAL 17 TABLES INDIVIDUALLY)
@@ -41143,8 +41197,7 @@ SELECT COUNT(*) FROM feedback;
 
 DESCRIBE specialists;
 
-# 30  Questions and queries
-# Easy 1-8
+# Questions and queries
 
 # 1. Display the first name, last name, city, and membership type of all members.
 SELECT first_name, last_name, city, membership_type FROM members;
@@ -41175,8 +41228,6 @@ SELECT * from lab_tests WHERE test_status = 'completed';
 
 # 8. Find all payments made through UPI.
 SELECT * FROM payments WHERE payment_mode = 'UPI';
-
-# Simple–Medium — 9 to 16
 
 # 9. Find the average consultation fee of all specialists.
 SELECT avg(consultation_fee) AS avg_consultation_fee FROM specialists;
