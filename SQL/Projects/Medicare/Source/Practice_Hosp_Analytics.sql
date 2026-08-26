@@ -1,5 +1,7 @@
 CREATE DATABASE hosp_ana_database;
+
 USE hosp_ana_database;
+
 CREATE TABLE Hospitals (
 hospital_id VARCHAR(6),
 hospital_name VARCHAR(100),
@@ -14,6 +16,7 @@ email VARCHAR(100),
 CONSTRAINT pk_Hospitals PRIMARY KEY
 (hospital_id)
 );
+
 CREATE TABLE Departments (
 department_id VARCHAR(6),
 department_name VARCHAR(80),
@@ -23,6 +26,7 @@ head_doctor_id VARCHAR(8),
 CONSTRAINT pk_Deprtments PRIMARY KEY
 (department_id)
 );
+
 CREATE TABLE Doctors (
 doctor_id VARCHAR(8),
 first_name VARCHAR(20),
@@ -40,6 +44,7 @@ joining_date VARCHAR(14),
 CONSTRAINT pk_Doctors PRIMARY KEY
 (doctor_id)
 );
+
 CREATE TABLE Patients (
 patient_id VARCHAR(10),
 first_name VARCHAR(20),
@@ -56,6 +61,7 @@ registration_date VARCHAR(14),
 CONSTRAINT pk_Patients PRIMARY KEY
 (patient_id)
 );
+
 CREATE TABLE Rooms (
 room_id VARCHAR(10),
 hospital_id VARCHAR(6),
@@ -67,6 +73,7 @@ room_status VARCHAR(15),
 CONSTRAINT pk_Rooms PRIMARY KEY
 (room_id)
 );
+
 CREATE TABLE Appointments (
 appointment_id VARCHAR(15),
 patient_id VARCHAR(15),
@@ -80,6 +87,7 @@ created_at VARCHAR(20),
 CONSTRAINT pk_Appointments PRIMARY KEY
 (appointment_id)
 );
+
 CREATE TABLE Admissions (
 admission_id VARCHAR(10),
 patient_id VARCHAR(10),
@@ -94,6 +102,7 @@ admission_status VARCHAR(20),
 CONSTRAINT pk_Admissions PRIMARY KEY
 (admission_id)
 );
+
 CREATE TABLE Treatments (
 treatment_id VARCHAR(15),
 admission_id VARCHAR(15),
@@ -106,6 +115,7 @@ treatment_status VARCHAR(15),
 CONSTRAINT pk_Treatments PRIMARY KEY
 (treatment_id)
 );
+
 CREATE TABLE Insurance (
 insurance_id VARCHAR(10),
 patient_id VARCHAR(10),
@@ -118,6 +128,7 @@ claim_status VARCHAR(15),
 CONSTRAINT pk_Insurance PRIMARY KEY
 (insurance_id)
 );
+
 CREATE TABLE Medicines (
 medicine_id VARCHAR(10),
 medicine_name VARCHAR(100),
@@ -128,6 +139,7 @@ stock_quantity VARCHAR(15),
 CONSTRAINT pk_Medicines PRIMARY KEY
 (medicine_id)
 );
+
 CREATE TABLE Pharmacy (
 pharmacy_sale_id VARCHAR(15),
 patient_id VARCHAR(15),
@@ -139,6 +151,7 @@ total_price VARCHAR(15),
 CONSTRAINT pk_Pharmacy PRIMARY KEY
 (pharmacy_sale_id)
 );
+
 CREATE TABLE Laboratory (
 lab_test_id VARCHAR(15),
 patient_id VARCHAR(10),
@@ -152,6 +165,7 @@ test_status VARCHAR(15),
 CONSTRAINT pk_Laboratory PRIMARY KEY
 (lab_test_id)
 );
+
 CREATE TABLE Employees (
 employee_id VARCHAR(15),
 first_name VARCHAR(20),
@@ -168,6 +182,7 @@ email VARCHAR(100),
 CONSTRAINT pk_Employees PRIMARY KEY
 (employee_id)
 );
+
 CREATE TABLE Billing (
 bill_id VARCHAR(10),
 patient_id VARCHAR(10),
@@ -184,6 +199,7 @@ bill_status VARCHAR(15),
 CONSTRAINT pk_Billing PRIMARY KEY
 (bill_id)
 );
+
 CREATE TABLE Payments (
 payment_id VARCHAR(10),
 bill_id VARCHAR(10),
