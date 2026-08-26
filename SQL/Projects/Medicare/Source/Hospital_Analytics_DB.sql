@@ -12,8 +12,8 @@ hospital_type VARCHAR(40) NOT NULL,
 city VARCHAR(50) NOT NULL,
 state VARCHAR(50) NOT NULL,
 region VARCHAR(20) NOT NULL,
-bed_capacity INT(10) NOT NULL,
-established_year INT(6) NOT NULL,
+bed_capacity INT NOT NULL,
+established_year INT NOT NULL,
 contact_number VARCHAR(20) NOT NULL,
 email VARCHAR(100) NOT NULL,
 CONSTRAINT pk_Hospitals PRIMARY KEY(hospital_id)
@@ -116,7 +116,7 @@ specialization VARCHAR(20) NOT NULL,
 department_id VARCHAR(6) NOT NULL,
 hospital_id VARCHAR(10) NOT NULL,
 qualification VARCHAR(20) NOT NULL,
-experience_year INT(6) NOT NULL,
+experience_year INT NOT NULL,
 consultation_fee DECIMAL(8,2) NOT NULL,
 phone_number VARCHAR(20) NOT NULL,
 email VARCHAR(100),
@@ -2644,7 +2644,7 @@ CONSTRAINT pk_rooms PRIMARY KEY(room_id),
 CONSTRAINT fk_rooms_hospitals FOREIGN KEY (hospital_id) REFERENCES hospitals(hospital_id)
 );
 
-# innsert values into rooms table
+# insert values into rooms table
 INSERT INTO rooms (room_id, hospital_id, room_number, room_type, floor_number, daily_charge, room_status) VALUES
 ('RM00001', 'H001', '626', 'ICU', 1, 11862, 'Occupied'),
 ('RM00002', 'H001', '320', 'Semi-Private', 4, 3221, 'Occupied'),
@@ -3466,16 +3466,6 @@ CONSTRAINT fk_appointments_patients FOREIGN KEY(patient_id) REFERENCES patients(
 CONSTRAINT fk_appointments_doctors FOREIGN KEY(doctor_id) REFERENCES doctors(doctor_id),
 CONSTRAINT fk_appointments_hospitals FOREIGN KEY(hospital_id) REFERENCES hospitals(hospital_id)
 );
-
-# foreign key mistakenly stored as admissions_hospitals so the following was changed
--- Step 1: Drop the old constraint
-ALTER TABLE appointments 
-DROP FOREIGN KEY fk_admissions_hospitals;
-
--- Step 2: Add it back with the correct name
-ALTER TABLE appointments 
-ADD CONSTRAINT fk_appointments_hospitals 
-FOREIGN KEY (hospital_id) REFERENCES hospitals(hospital_id);
 
 /* missing 200 vvalues to find!!
 SET SESSION cte_max_recursion_depth = 5100;
@@ -11167,6 +11157,7 @@ INSERT INTO Admissions (admission_id, patient_id, hospital_id, department_id, ad
 ('AD02498', 'PT000066', 'H009', 'D012', 'DR0402', 'RM00223', '2024-10-23', NULL, 'Emergency', 'Admitted'),
 ('AD02499', 'PT001565', 'H011', 'D014', 'DR0107', 'RM00306', '2025-02-01', '2025-02-02', 'Emergency', 'Discharged'),
 ('AD02500', 'PT000072', 'H019', 'D025', 'DR0374', 'RM00535', '2024-11-01', '2024-11-08', 'Planned', 'Discharged');
+
 select count(*) from admissions;
 
 # treatments table creation with pk and 3 fk
@@ -14705,6 +14696,8 @@ INSERT INTO Treatments (treatment_id, admission_id, patient_id, doctor_id, treat
 ('TR003499', NULL, 'PT000543', 'DR0176', 'Dengue Fever Management', '2025-04-26', 49814.49, 'Completed'),
 ('TR003500', 'AD01549', 'PT000238', 'DR0046', 'Anemia Management', '2025-03-02', 51110.77, 'Completed');
 
+select count(*) from treatments;
+
 # isurance table creation
 CREATE TABLE insurance (
 insurance_id VARCHAR(10) NOT NULL,
@@ -16229,6 +16222,8 @@ INSERT INTO Insurance (insurance_id, patient_id, insurance_provider, policy_numb
 ('IN01499', 'PT001005', 'Bajaj Allianz General Insurance', 'POL853271', 200000, '2024-05-02', '2025-05-02', 'Settled'),
 ('IN01500', 'PT001983', 'Reliance General Insurance', 'POL902791', 300000, '2020-09-14', '2021-09-14', 'Approved');
 
+select count(*) from insurance;
+
 # medicine table creation with pk 
 CREATE TABLE medicines (
 medicine_id VARCHAR(10) NOT NULL,
@@ -16543,6 +16538,8 @@ INSERT INTO Medicines (medicine_id, medicine_name, category, manufacturer, unit_
 ('MED0298', 'Zinc Sulphate 20mg', 'Vitamin & Supplement', 'Abbott India', 557.62, 4810),
 ('MED0299', 'Cefixime 10mg', 'Antibiotic', 'Lupin', 422.22, 3623),
 ('MED0300', 'Clopidogrel 20mg', 'Cardiac', 'Cadila Healthcare', 388.66, 4464);
+
+select count(*) from medicines;
 
 # pharmacy table creation with pk and 3 fk
 CREATE TABLE pharmacy (
@@ -19074,6 +19071,8 @@ INSERT INTO Pharmacy (pharmacy_sale_id, patient_id, medicine_id, hospital_id, qu
 ('PH002499', 'PT001084', 'MED0004', 'H009', 30, '2024-08-03', 13501.8),
 ('PH002500', 'PT001746', 'MED0122', 'H016', 8, '2025-09-02', 6720.64);
 
+select count(*) from pharmacy;
+
 # lab table creation with pk and 3 fk
 CREATE TABLE laboratory (
 lab_test_id VARCHAR(15) NOT NULL,
@@ -19088,7 +19087,7 @@ test_status VARCHAR(15) NOT NULL,
 CONSTRAINT pk_laboratory PRIMARY KEY(lab_test_id),
 CONSTRAINT fk_laboratory_patients FOREIGN KEY(patient_id) REFERENCES patients(patient_id),
 CONSTRAINT fk_laboratory_doctors FOREIGN KEY(doctor_id) REFERENCES doctors(doctor_id),
-CONSTRAINT fk_Laboratory_Hospitals FOREIGN KEY(hospital_id) REFERENCES Hospitals(hospital_id)
+CONSTRAINT fk_Laboratory_hospitals FOREIGN KEY(hospital_id) REFERENCES hospitals(hospital_id)
 );
 
 # innserting values into laboratory table
@@ -22107,6 +22106,8 @@ INSERT INTO Laboratory (lab_test_id, patient_id, doctor_id, hospital_id, test_na
 ('LB002998', 'PT001851', 'DR0097', 'H005', 'Liver Function Test', '2024-08-17', 'Normal', 5883.34, 'Pending'),
 ('LB002999', 'PT000661', 'DR0369', 'H014', 'CT Scan Abdomen', '2025-07-10', 'Normal', 4185.86, 'Pending'),
 ('LB003000', 'PT000447', 'DR0329', 'H011', 'Urine Routine', '2024-04-05', 'Normal', 261.3, 'Completed');
+
+select count(*) from laboratory;
 
 # employee table creation with  pk and 2 fk
 CREATE TABLE employees (
@@ -28181,6 +28182,8 @@ INSERT INTO Billing (bill_id, patient_id, admission_id, appointment_id, bill_dat
 ('BL004999', 'PT001172', NULL, 'AP004899', '2024-12-28', 0, 902.49, 107.33, 5982.73, 183.79, 7176.34, 'Paid'),
 ('BL005000', 'PT000052', 'AD00574', NULL, '2024-10-02', 9785.02, 2342.02, 1094.84, 2947.3, 730.86, 16900.04, 'Partially Paid');
 
+select  count(*) from billing;
+
 # payment table creation
 CREATE TABLE payments (
 payment_id VARCHAR(10) NOT NULL,
@@ -33351,6 +33354,7 @@ SELECT * FROM doctors where department_id IS NULL;
 
 # 4. Doctors - email is blank
 SELECT * FROM doctors where email IS NULL;
+
 # 5. Check email format
 SELECT * FROM doctors where email NOT REGEXP '^[A-Za-z0-9_%.-]+@[A-Za-z0-9-_.]+\\.[A-Za-z]{2,}$';
 
@@ -33410,6 +33414,8 @@ THEN 'Female'
 ELSE gender
 END;
 
+# set sql_SAFE_UPDATES=0;
+
 # 5. Doctors - Cleaning the emails which are in wrong format
 # This is previewing
 SELECT 
@@ -33439,7 +33445,8 @@ ELSE email
 END 
 WHERE email not like '%@%.%' or
 	email like '%@@%.%';
-#SET SQL_SAFE_UPDATES = 0; - When using the Upadate query where condition is applicable for id alone but when we try to use other columns in where condition then it shows sql safe error so to fix it we use this query 
+    
+#S ET SQL_SAFE_UPDATES = 0; - When using the Upadate query where condition is applicable for id alone but when we try to use other columns in where condition then it shows sql safe error so to fix it we use this query 
 
 # 6. Patients - Trim the first_name column
 UPDATE patients 
@@ -33512,7 +33519,6 @@ FROM employees;
 #===================================================================================================================================================================
 # ex. List the unique hospital names 
 SELECT distinct hospital_name from Hospitals;
-
 
 # 17-08-2026 (monday)
 # coo asked how many hospitals does medicare operator?
