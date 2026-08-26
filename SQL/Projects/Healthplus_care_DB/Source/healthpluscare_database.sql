@@ -11,7 +11,7 @@ clinic_name VARCHAR(100) NOT NULL,
 clinic_type VARCHAR(50) NOT NULL,
 city VARCHAR(50) NOT NULL,
 state VARCHAR(30) NOT NULL,
-established_year INT(6) NOT NULL,
+established_year INT NOT NULL,
 contact_number VARCHAR(20) NOT NULL,
 CONSTRAINT pk_Clinics PRIMARY KEY(clinic_id) 
 );
@@ -46,7 +46,7 @@ gender VARCHAR(8) NOT NULL,
 specialization VARCHAR(50) NOT NULL,
 clinic_id VARCHAR(6) NOT NULL,
 qualification VARCHAR(20) NOT NULL,
-experience_years INT(4) NOT NULL,
+experience_years INT NOT NULL,
 consultation_fee DECIMAL(8,2) NOT NULL,
 CONSTRAINT pk_Specialists PRIMARY KEY(specialist_id),
 CONSTRAINT fk_Specialists_Clinics FOREIGN KEY(clinic_id) REFERENCES Clinics(clinic_id)
