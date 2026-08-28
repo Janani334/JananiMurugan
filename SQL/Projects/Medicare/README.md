@@ -1,5 +1,6 @@
 # Hospital Analytics Database – SQL Data Analysis
 
+
 ## 1. Project Overview
 
 Hospital Analytics Database is a healthcare data analysis project developed using MySQL. It organizes hospital, department, doctor, patient, appointment, admission, treatment, billing, payment, laboratory, pharmacy, and employee data into a relational database.
