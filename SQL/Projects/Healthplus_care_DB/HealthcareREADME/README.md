@@ -1,4 +1,4 @@
-# Hospital Analytics Database - SQL Data Analysis
+# Healthcare Database Analytics – SQL Data Analysis
 
 ## 1. Project Overview
 
@@ -41,7 +41,7 @@ The database consists of multiple related tables representing different areas of
 
 The database follows a relational structure where healthcare entities are connected through primary and foreign keys. These relationships allow information from different tables to be combined for analysis while maintaining data consistency.
 
-![Hospital Database Schema](../Screenshots/DB_schema.png)
+![Healthcare Database Schema](../Screenshots/DB_schema.png)
 
 ## 6. Data Profiling
 
