@@ -142,7 +142,7 @@ The analysis provides operational indicators that can be used to understand the 
 | Appointments by Doctor | Indicates doctor-level activity |
 
 
-## 16. Insights
+## 16. Key Insights
 
 The analysis highlights differences in hospital capacity, doctor distribution, specialization availability, consultation fees, appointment activity, and department coverage.
 
