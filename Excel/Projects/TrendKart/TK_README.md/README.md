@@ -57,37 +57,7 @@ The profiling process examined duplicate records, missing values, inconsistent f
 
 A separate Data Quality Log was maintained to document identified issues and the number of affected rows.
 
-## 6. Data Quality Issues Identified
-
-The major data-quality issues identified during profiling included:
-
-| Data Area | Issue Identified | Rows Affected |
-|---|---|---:|
-| Sales | Duplicate Invoice Numbers | 5 |
-| Sales | Blank Customer IDs | 6 |
-| Sales | Blank Product IDs | 5 |
-| Sales | Blank Employee IDs | 5 |
-| Sales | Mixed Date Formats | 6 |
-| Sales | Quantity Stored as Text | 5 |
-| Sales | Extra Spaces in Payment Mode | 4 |
-| Sales | Negative Profit | 4 |
-| Sales | Quantity Equal to Zero | 5 |
-| Sales | Mixed Payment-Mode Casing | 5 |
-| Sales | Return Status Typos | 4 |
-| Customers | Duplicate Phone Numbers | 5 |
-| Customers | Invalid Email Addresses | 5 |
-| Customers | Inconsistent Gender Values | 5 |
-| Customers | Inconsistent Membership Values | 5 |
-| Customers | Extra Spaces in Names | 5 |
-| Products | Duplicate Product Names | 4 |
-| Products | Incorrect Category Spellings | 4 |
-| Products | Blank Brand Values | 4 |
-| Stores | Missing Manager Names | 3 |
-| Stores | Store Status Typos | 2 |
-| Employees | Extra Spaces in Names | 2 |
-| Employees | Employment Status Typos | 2 |
-
-## 7. Data Cleaning
+## 6. Data Cleaning
 
 The identified quality issues were reviewed and corrected before performing the final analysis.
 
@@ -97,7 +67,7 @@ The cleaned datasets were then combined with relevant master-data attributes suc
 
 The final Sales_Cleaned sheet contains 3,000 transactions with 36 analytical columns.
 
-## 8. Data Analysis
+## 7. Data Analysis
 
 Exploratory data analysis was performed using Microsoft Excel to understand sales performance and identify important business trends.
 
@@ -119,24 +89,19 @@ Pivot Tables, PivotCharts, calculated fields, Excel formulas, aggregations, comp
 
 The analysis helped identify high-performing categories, regions, brands, customer segments, sales channels, payment methods, and areas requiring improvement.
 
-## 9. Key Performance Indicators (KPIs)
 
-The following KPIs were developed to measure overall business performance:
+## 8. Key Performance Indicators (KPIs)
+
+The following four KPIs were developed and displayed on the Excel dashboard to monitor overall business performance:
 
 | KPI | Result |
 |---|---:|
 | Total Sales | ₹92,27,179.96 |
-| Total Cost | ₹65,96,441.12 |
 | Total Profit | ₹18,01,437.12 |
 | Profit Margin | 19.52% |
-| Total Quantity Sold | 6,100 |
-| Total Discount Amount | ₹11,84,202.84 |
-| Total GST Amount | ₹8,26,220.30 |
 | Sales Transactions | 3,000 |
-| Unique Customers in Sales Data | 821 |
-| Return Rate by Transactions | 4.87% |
 
-## 10. Dashboard Development
+## 9. Dashboard Development
 
 An interactive Excel dashboard was designed to provide management with a consolidated view of business performance.
 
@@ -159,7 +124,7 @@ The dashboard focuses on the following major metrics and dimensions:
 
 The dashboard presents the major KPIs and visual analysis required to evaluate TrendKart's sales and business performance.
 
-## 11. Key Insights
+## 10. Key Insights
 
 ### Product Performance
 
@@ -193,7 +158,7 @@ Returned transactions represented approximately 4.87% of all transactions and ac
 
 October 2024 recorded the highest monthly sales at approximately ₹15.19 lakh, while January 2025 recorded the lowest monthly sales at approximately ₹3.05 lakh.
 
-## 12. Recommendations
+## 11. Recommendations
 
 ### Products
 
@@ -227,7 +192,7 @@ Plan targeted promotions around peak sales periods and investigate low-performin
 
 Use category, brand, and sales trends to improve inventory planning and product availability.
 
-## 13. Tools & Techniques Used
+## 12. Tools & Techniques Used
 
 The project was developed using Microsoft Excel with the following tools and techniques:
 
@@ -253,7 +218,7 @@ The project was developed using Microsoft Excel with the following tools and tec
 - Insight Generation
 - Business Recommendations
 
-## 14. Project Workflow
+## 13. Project Workflow
 
 The complete project followed a structured analytics workflow:
 
@@ -261,13 +226,13 @@ Business Understanding → Business Problem Definition → Data Collection → D
 
 This workflow ensures that the final dashboard is supported by a clean and validated dataset and that the analysis is directly connected to business requirements.
 
-## 15. Project Outcome
+## 14. Project Outcome
 
 The project transformed raw retail transaction data into a structured analytical solution covering sales, profitability, customers, products, stores, regions, channels, payments, and returns.
 
 The final dashboard and analysis provide management with a clear understanding of business performance and highlight opportunities for improving sales, customer retention, inventory planning, digital adoption, and profitability.
 
-## 16. Conclusion
+## 15. Conclusion
 
 TrendKart Fashion Enterprise demonstrates the end-to-end application of data analytics using Microsoft Excel.
 
