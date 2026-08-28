@@ -1,4 +1,4 @@
-# HealthPlus Care â€“ Healthcare Database Analysis
+# HealthPlus Care ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“ Healthcare Database Analysis
 
 
 
@@ -108,43 +108,43 @@ The database uses primary keys and foreign keys to connect related healthcare en
 
 |---|---|
 
-| Specialists â†’ Clinics | Connects specialists with their clinics |
+| Specialists ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ Clinics | Connects specialists with their clinics |
 
-| Consultations â†’ Members | Connects consultations with members |
+| Consultations ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ Members | Connects consultations with members |
 
-| Consultations â†’ Specialists | Connects consultations with specialists |
+| Consultations ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ Specialists | Connects consultations with specialists |
 
-| Consultations â†’ Clinics | Connects consultations with clinics |
+| Consultations ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ Clinics | Connects consultations with clinics |
 
-| Telemedicine\_Sessions â†’ Consultations | Connects telemedicine sessions with consultations |
+| Telemedicine\_Sessions ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ Consultations | Connects telemedicine sessions with consultations |
 
-| Corporate\_Members â†’ Corporates | Connects corporate members with organizations |
+| Corporate\_Members ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ Corporates | Connects corporate members with organizations |
 
-| Corporate\_Members â†’ Members | Connects corporate members with members |
+| Corporate\_Members ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ Members | Connects corporate members with members |
 
-| Package\_Subscriptions â†’ Members | Connects subscriptions with members |
+| Package\_Subscriptions ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ Members | Connects subscriptions with members |
 
-| Package\_Subscriptions â†’ Health\_Packages | Connects subscriptions with healthcare packages |
+| Package\_Subscriptions ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ Health\_Packages | Connects subscriptions with healthcare packages |
 
-| Prescriptions â†’ Consultations | Connects prescriptions with consultations |
+| Prescriptions ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ Consultations | Connects prescriptions with consultations |
 
-| Lab\_Tests â†’ Clinics | Connects laboratory tests with clinics |
+| Lab\_Tests ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ Clinics | Connects laboratory tests with clinics |
 
-| Claims â†’ Members | Connects claims with members |
+| Claims ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ Members | Connects claims with members |
 
-| Claims â†’ Consultations | Connects claims with consultations |
+| Claims ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ Consultations | Connects claims with consultations |
 
-| Staff â†’ Clinics | Connects staff with clinics |
+| Staff ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ Clinics | Connects staff with clinics |
 
-| Billing â†’ Members | Connects billing records with members |
+| Billing ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ Members | Connects billing records with members |
 
-| Billing â†’ Consultations | Connects billing with consultations |
+| Billing ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ Consultations | Connects billing with consultations |
 
-| Payments â†’ Billing | Connects payments with billing records |
+| Payments ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ Billing | Connects payments with billing records |
 
-| Feedback â†’ Members | Connects feedback with members |
+| Feedback ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ Members | Connects feedback with members |
 
-| Feedback â†’ Consultations | Connects feedback with consultations |
+| Feedback ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ Consultations | Connects feedback with consultations |
 
 
 
