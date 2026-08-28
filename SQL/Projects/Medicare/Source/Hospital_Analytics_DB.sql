@@ -33339,7 +33339,7 @@ FROM doctors
 
 # =========================================================================================================================================================================================
 # Data Profiling
-#====================================================================================================================================================================================================
+#==========================================================================================================================================================================================
 
 # 1. Departments table- head_doctor_id is null
 SELECT * from departments where head_doctor_id is null ;
@@ -33401,7 +33401,7 @@ SELECT * FROM billing where appointment_id is null;
 
 # ==============================================================================================================================================================================================
 # Data Cleaning
-#=====================================================================================================================================================================================================
+#===============================================================================================================================================================================================
 
 # 2 . Update the changed male and female column in the tables - doctors
  UPDATE doctors 
@@ -33446,7 +33446,7 @@ END
 WHERE email not like '%@%.%' or
 	email like '%@@%.%';
     
-#S ET SQL_SAFE_UPDATES = 0; - When using the Upadate query where condition is applicable for id alone but when we try to use other columns in where condition then it shows sql safe error so to fix it we use this query 
+# SET SQL_SAFE_UPDATES = 0; - When using the Upadate query where condition is applicable for id alone but when we try to use other columns in where condition then it shows sql safe error so to fix it we use this query 
 
 # 6. Patients - Trim the first_name column
 UPDATE patients 
