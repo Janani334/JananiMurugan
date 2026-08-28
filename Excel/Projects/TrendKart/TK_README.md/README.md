@@ -580,8 +580,6 @@ The dashboard analysis produced the following key business findings.
 
 \## 11. Recommendations
 
-
-
 Based on the dashboard insights, the following recommendations are proposed.
 
 
