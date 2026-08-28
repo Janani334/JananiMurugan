@@ -104,7 +104,7 @@ The TrendKart dashboard provides a consolidated view of overall business perform
 
 ### Dashboard
 
-![TrendKart Fashion Enterprise Dashboard](../Dashboard/YourPNGFileName.png)
+![TrendKart Fashion Enterprise Dashboard](../Dashboard/TK_finaldb.png)
 
 The dashboard presents the major KPIs and visual analysis required to evaluate TrendKart's sales and business performance.
 
