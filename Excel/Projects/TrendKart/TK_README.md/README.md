@@ -2,8 +2,6 @@
 
 
 
-
-
 \## 1. Business Understanding
 
 
