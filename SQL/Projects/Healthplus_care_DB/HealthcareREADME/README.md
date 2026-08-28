@@ -1,8 +1,8 @@
-\# HealthPlus Care – Healthcare Database Analysis
+# HealthPlus Care â€“ Healthcare Database Analysis
 
 
 
-\## 1. Project Overview
+## 1. Project Overview
 
 
 
@@ -16,7 +16,7 @@ The project focuses on database design, data profiling, data cleaning, and SQL-b
 
 
 
-\## 2. Business Understanding
+## 2. Business Understanding
 
 
 
@@ -26,7 +26,7 @@ The project aims to understand healthcare operations such as member management, 
 
 
 
-\## 3. Problem Statements
+## 3. Problem Statements
 
 
 
@@ -36,7 +36,7 @@ The analysis focuses on understanding member and specialist activity, consultati
 
 
 
-\## 4. Tools \& Technologies
+## 4. Tools \& Technologies
 
 
 
@@ -46,7 +46,7 @@ MySQL was used to create and manage the relational healthcare database, while My
 
 
 
-\## 5. Database Structure
+## 5. Database Structure
 
 
 
@@ -96,7 +96,7 @@ The HealthPlus Care database consists of 17 relational tables.
 
 
 
-\## 6. Database Relationships
+## 6. Database Relationships
 
 
 
@@ -108,49 +108,49 @@ The database uses primary keys and foreign keys to connect related healthcare en
 
 |---|---|
 
-| Specialists → Clinics | Connects specialists with their clinics |
+| Specialists â†’ Clinics | Connects specialists with their clinics |
 
-| Consultations → Members | Connects consultations with members |
+| Consultations â†’ Members | Connects consultations with members |
 
-| Consultations → Specialists | Connects consultations with specialists |
+| Consultations â†’ Specialists | Connects consultations with specialists |
 
-| Consultations → Clinics | Connects consultations with clinics |
+| Consultations â†’ Clinics | Connects consultations with clinics |
 
-| Telemedicine\_Sessions → Consultations | Connects telemedicine sessions with consultations |
+| Telemedicine\_Sessions â†’ Consultations | Connects telemedicine sessions with consultations |
 
-| Corporate\_Members → Corporates | Connects corporate members with organizations |
+| Corporate\_Members â†’ Corporates | Connects corporate members with organizations |
 
-| Corporate\_Members → Members | Connects corporate members with members |
+| Corporate\_Members â†’ Members | Connects corporate members with members |
 
-| Package\_Subscriptions → Members | Connects subscriptions with members |
+| Package\_Subscriptions â†’ Members | Connects subscriptions with members |
 
-| Package\_Subscriptions → Health\_Packages | Connects subscriptions with healthcare packages |
+| Package\_Subscriptions â†’ Health\_Packages | Connects subscriptions with healthcare packages |
 
-| Prescriptions → Consultations | Connects prescriptions with consultations |
+| Prescriptions â†’ Consultations | Connects prescriptions with consultations |
 
-| Lab\_Tests → Clinics | Connects laboratory tests with clinics |
+| Lab\_Tests â†’ Clinics | Connects laboratory tests with clinics |
 
-| Claims → Members | Connects claims with members |
+| Claims â†’ Members | Connects claims with members |
 
-| Claims → Consultations | Connects claims with consultations |
+| Claims â†’ Consultations | Connects claims with consultations |
 
-| Staff → Clinics | Connects staff with clinics |
+| Staff â†’ Clinics | Connects staff with clinics |
 
-| Billing → Members | Connects billing records with members |
+| Billing â†’ Members | Connects billing records with members |
 
-| Billing → Consultations | Connects billing with consultations |
+| Billing â†’ Consultations | Connects billing with consultations |
 
-| Payments → Billing | Connects payments with billing records |
+| Payments â†’ Billing | Connects payments with billing records |
 
-| Feedback → Members | Connects feedback with members |
+| Feedback â†’ Members | Connects feedback with members |
 
-| Feedback → Consultations | Connects feedback with consultations |
-
-
+| Feedback â†’ Consultations | Connects feedback with consultations |
 
 
 
-\## 7. Database Schema
+
+
+## 7. Database Schema
 
 
 
@@ -164,7 +164,7 @@ The database follows a relational structure where healthcare entities are connec
 
 
 
-\## 8. Data Profiling
+## 8. Data Profiling
 
 
 
@@ -184,7 +184,7 @@ The profiling results helped identify records that required correction before th
 
 
 
-\## 9. Data Cleaning
+## 9. Data Cleaning
 
 
 
@@ -204,7 +204,7 @@ The cleaned data was validated before analysis to ensure that the database remai
 
 
 
-\## 10. Keys \& Constraints
+## 10. Keys \& Constraints
 
 
 
@@ -226,7 +226,7 @@ The cleaned data was validated before analysis to ensure that the database remai
 
 
 
-\## 11. SQL Functions \& Concepts Used
+## 11. SQL Functions \& Concepts Used
 
 
 
@@ -268,7 +268,7 @@ The cleaned data was validated before analysis to ensure that the database remai
 
 
 
-\## 12. Data Analysis
+## 12. Data Analysis
 
 
 
@@ -284,7 +284,7 @@ SQL queries were used to analyze healthcare operations and answer business-relat
 
 
 
-\## 13. Key Insights
+## 13. Key Insights
 
 
 
@@ -298,7 +298,7 @@ The results provide a clearer understanding of healthcare operations and areas t
 
 
 
-\## 14. Recommendations
+## 14. Recommendations
 
 
 
@@ -308,7 +308,7 @@ Healthcare management can use these insights to monitor specialist workload, rev
 
 
 
-\## 15. Conclusion
+## 15. Conclusion
 
 
 
