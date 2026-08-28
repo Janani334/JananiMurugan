@@ -124,21 +124,21 @@ The TrendKart Fashion Enterprise Analysis provides a structured overview of sale
 
 **9. Insights and Recommendation**
 
-| \*\***Area**\*\*  | \*\***Recommendation**\*\*                         |
-
-| --------- | ------------------------------------------ |
-
-| Products  | Increase stock of top-selling products     |
-
-| Regions   | Focus marketing on high-performing regions |
-
-| Customers | Strengthen loyalty offers                  |
-
-| Payments  | Promote digital payments                   |
-
-| Returns   | Reduce product return rates                |
-
-| Sales     | Plan offers during peak months             |
 
 
+| **Area** | **Recommendation** |
+
+|---|---|
+
+| Products | Increase stock of top-selling products |
+
+| Regions | Focus marketing on high-performing regions |
+
+| Customers | Strengthen loyalty offers |
+
+| Payments | Promote digital payments |
+
+| Returns | Reduce product return rates |
+
+| Sales | Plan offers during peak months |
 
