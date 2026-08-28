@@ -46,7 +46,7 @@ The database consists of multiple related tables representing different areas of
 
 The database follows a relational structure where healthcare entities are connected through primary and foreign keys. These relationships allow information from different tables to be combined for analysis while maintaining data consistency.
 
-![Hospital Database Schema](../../Screenshots/DB_schema.png)
+![Hospital Database Schema](../Screenshots/DB_schema.png)
 
 
 ## 6. Data Profiling
@@ -55,7 +55,7 @@ Data profiling was performed before analysis to understand the quality and consi
 
 The profiling results helped identify records that required correction before performing the final analysis.
 
-![Data Profiling](../../Screenshots/Data_profiling.png)
+![Data Profiling](../Screenshots/Data_profiling.png)
 
 
 ## 7. Data Cleaning
@@ -64,7 +64,8 @@ The identified data-quality issues were reviewed and corrected using SQL queries
 
 The cleaned data was validated before analysis to ensure that the database remained consistent and the relationships between tables were maintained.
 
-![Data Cleaning](../../Screenshots/Data_cleaning.png)
+![Data Cleaning](../Screenshots/Data_cleaning.png)
+
 
 ## 8. Database Keys & Constraints
 
@@ -79,7 +80,7 @@ SQL analysis was performed to understand hospital capacity, doctor distribution,
 
 The analysis included filtering, grouping, aggregation, comparisons, top-N analysis, and ranking to answer the defined business questions.
 
-![Data Analysis](../../Screenshots/Data_analysis.png)
+![Data Analysis](../Screenshots/Data_analysis.png)
 
 
 ## 10. SQL Functions & Techniques
