@@ -1,106 +1,157 @@
 # TrendKart Fashion Enterprise – Sales & Business Analytics
 
-## 1. Business Understanding
+## 1. Project Overview
 
-TrendKart Fashion Enterprise is a retail business operating across multiple products, brands, stores, regions and sales channels.
+TrendKart Fashion Enterprise is a retail sales analytics project developed to evaluate sales performance, customer behavior, product performance, store operations, payment patterns, and profitability.
 
-The project focuses on analyzing retail transaction data to understand sales performance, profitability, customer behavior and business trends.
+The project uses Microsoft Excel to perform business understanding, data profiling, data cleaning, exploratory analysis, KPI development, Pivot Table analysis, dashboard creation, and generation of actionable business insights.
 
-## 2. Project Objective
+The objective is to transform raw retail transaction data into meaningful information that can support data-driven business decisions.
 
-The objective is to analyze TrendKart's sales data and identify important patterns in sales, profit, products, customers, regions and sales channels.
+## 2. Business Understanding
 
-The project also aims to create meaningful KPIs and an Excel dashboard to support data-driven business decisions.
+TrendKart Fashion Enterprise operates across multiple stores and sales channels, serving customers across different regions with a wide range of fashion products and brands.
+
+The business generates transaction-level data containing sales, customers, products, stores, employees, payments, discounts, GST, returns, and profitability information.
+
+Analyzing this data helps management understand what is performing well, where improvements are required, and which areas can contribute to revenue and profit growth.
 
 ## 3. Business Questions
 
-| No. | Business Question | Analysis |
-|---:|---|---|
-| 1 | Which product categories generate the highest sales? | Category-wise sales |
-| 2 | Which regions perform better? | Regional performance |
-| 3 | How do sales and profit change over time? | Monthly trends |
-| 4 | Which brands contribute the most to sales? | Brand performance |
-| 5 | Which sales channel generates more revenue? | Channel analysis |
-| 6 | Which payment methods are most preferred? | Payment analysis |
-| 7 | How do membership segments contribute to sales? | Customer analysis |
-| 8 | What is the return performance? | Return analysis |
+The analysis was designed to answer the following key business questions:
+
+1. Which product categories generate the highest sales?
+2. Which regions and stores perform better?
+3. How do sales and profit change over time?
+4. Which brands contribute the most to sales?
+5. Which sales channels generate more revenue?
+6. Which payment methods are most preferred?
+7. What is the impact of product returns?
+8. How do membership customers contribute to sales?
+9. Who are the highest-value customers?
+10. How are stores performing against their targets?
 
 ## 4. Dataset Overview
 
-The TrendKart dataset contains transaction and business-related information covering products, customers, stores, employees, suppliers, sales and returns.
+The project contains 3,000 sales transactions supported by customer, product, store, employee, and supplier master data.
 
 | Dataset / Sheet | Records | Purpose |
 |---|---:|---|
-| Raw Sales Transactions | 3,000 | Original transaction data |
-| Customers | 850 | Customer information |
-| Products | 250 | Product and brand information |
+| Raw Sales Transactions | 3,000 | Original transaction-level sales data |
+| Customers | 850 | Customer master information |
+| Products | 250 | Product and pricing information |
 | Stores | 120 | Store and regional information |
 | Employees | 300 | Employee information |
 | Suppliers | 90 | Supplier information |
-| Sales_Cleaned | 3,000 | Final dataset for analysis |
-| Data Quality Log | 23 issues | Profiling and cleaning record |
+| Sales Cleaned | 3,000 | Final cleaned and enriched sales dataset |
+| Data Quality Log | 23 issues | Data-quality documentation |
+| Pivot Tables | 179 rows | Analytical summaries |
+| Report Metrics | 9 metrics | Dashboard requirements |
+| Insights | 6 areas | Business recommendations |
 
-## 5. Data Profiling & Cleaning
+## 5. Data Profiling
 
-Data profiling was performed to identify duplicates, missing values, inconsistent formats, spelling errors and invalid values.
+Data profiling was performed before analysis to understand the structure, completeness, consistency, and quality of the datasets.
 
-The identified issues were documented and corrected or validated to improve the quality and reliability of the final dataset.
+The profiling process examined duplicate records, missing values, inconsistent formats, incorrect spellings, invalid values, formatting issues, and business-rule violations.
 
-| Data Issue | Cleaning Action |
-|---|---|
-| Duplicate invoices | Identified and reviewed |
-| Missing IDs | Identified and handled |
-| Date inconsistencies | Standardized |
-| Quantity format issues | Converted to numeric |
-| Payment mode inconsistencies | Standardized |
-| Return status errors | Corrected |
-| Customer data issues | Validated |
-| Product category errors | Corrected |
-| Store status errors | Standardized |
-| Employee status errors | Corrected |
+A separate Data Quality Log was maintained to document identified issues and the number of affected rows.
 
-## 6. Data Analysis
+## 6. Data Quality Issues Identified
 
-The cleaned data was analyzed using Excel PivotTables, PivotCharts, calculated fields and aggregations.
+The major data-quality issues identified during profiling included:
 
-The analysis covers sales, profit, products, brands, regions, stores, customers, membership, payment methods, sales channels and returns.
+| Data Area | Issue Identified | Rows Affected |
+|---|---|---:|
+| Sales | Duplicate Invoice Numbers | 5 |
+| Sales | Blank Customer IDs | 6 |
+| Sales | Blank Product IDs | 5 |
+| Sales | Blank Employee IDs | 5 |
+| Sales | Mixed Date Formats | 6 |
+| Sales | Quantity Stored as Text | 5 |
+| Sales | Extra Spaces in Payment Mode | 4 |
+| Sales | Negative Profit | 4 |
+| Sales | Quantity Equal to Zero | 5 |
+| Sales | Mixed Payment-Mode Casing | 5 |
+| Sales | Return Status Typos | 4 |
+| Customers | Duplicate Phone Numbers | 5 |
+| Customers | Invalid Email Addresses | 5 |
+| Customers | Inconsistent Gender Values | 5 |
+| Customers | Inconsistent Membership Values | 5 |
+| Customers | Extra Spaces in Names | 5 |
+| Products | Duplicate Product Names | 4 |
+| Products | Incorrect Category Spellings | 4 |
+| Products | Blank Brand Values | 4 |
+| Stores | Missing Manager Names | 3 |
+| Stores | Store Status Typos | 2 |
+| Employees | Extra Spaces in Names | 2 |
+| Employees | Employment Status Typos | 2 |
 
-## 7. Tools & Techniques
+## 7. Data Cleaning
 
-| Area | Tools / Techniques |
-|---|---|
-| Data Storage | Microsoft Excel |
-| Data Profiling | Data quality checks |
-| Data Cleaning | Standardization and validation |
-| Data Transformation | Lookup and calculated fields |
-| Data Analysis | PivotTables and aggregations |
-| Visualization | PivotCharts and charts |
-| KPI Development | Excel calculations |
-| Dashboard | Interactive Excel Dashboard |
+The identified quality issues were reviewed and corrected before performing the final analysis.
 
-## 8. Dashboard & KPIs
+The cleaning process included removing duplicate invoice records, standardizing dates and categorical values, correcting spelling inconsistencies, handling missing identifiers, converting numeric fields into appropriate data types, removing unwanted spaces, correcting status values, and validating business-related values.
 
-The TrendKart dashboard provides a consolidated view of overall business performance through four key performance indicators and supporting visual analysis.
+The cleaned datasets were then combined with relevant master-data attributes such as customer membership, product category and brand, store region and type, and employee information.
 
-| KPI | Value |
+The final Sales_Cleaned sheet contains 3,000 transactions with 36 analytical columns.
+
+## 8. Data Analysis
+
+Exploratory data analysis was performed using Microsoft Excel to understand sales performance and identify important business trends.
+
+The analysis focused on:
+
+- Product category performance
+- Brand performance
+- Regional performance
+- Store performance
+- Monthly sales and profit trends
+- Sales channel performance
+- Payment mode contribution
+- Customer sales contribution
+- Membership analysis
+- Return performance
+- Store target analysis
+
+Pivot Tables, PivotCharts, calculated fields, Excel formulas, aggregations, comparisons, filters, and KPI calculations were used to analyze the data and identify meaningful business patterns.
+
+The analysis helped identify high-performing categories, regions, brands, customer segments, sales channels, payment methods, and areas requiring improvement.
+
+## 9. Key Performance Indicators (KPIs)
+
+The following KPIs were developed to measure overall business performance:
+
+| KPI | Result |
 |---|---:|
 | Total Sales | ₹92,27,179.96 |
+| Total Cost | ₹65,96,441.12 |
 | Total Profit | ₹18,01,437.12 |
-| Total Transactions | 3,000 |
 | Profit Margin | 19.52% |
+| Total Quantity Sold | 6,100 |
+| Total Discount Amount | ₹11,84,202.84 |
+| Total GST Amount | ₹8,26,220.30 |
+| Sales Transactions | 3,000 |
+| Unique Customers in Sales Data | 821 |
+| Return Rate by Transactions | 4.87% |
 
-### Dashboard Analysis
+## 10. Dashboard Development
 
-| Dashboard Analysis | Purpose |
-|---|---|
-| Sales by Product Category | Identify high-performing categories |
-| Regional Performance | Compare sales across regions |
-| Monthly Sales & Profit | Monitor business trends |
-| Sales Channel | Compare Online and Offline performance |
-| Top Brands | Identify leading brands |
-| Payment Mode | Understand customer preferences |
-| Membership Analysis | Evaluate customer segments |
-| Return Analysis | Monitor returned transactions |
+An interactive Excel dashboard was designed to provide management with a consolidated view of business performance.
+
+The dashboard focuses on the following major metrics and dimensions:
+
+- Total Sales by Product Category
+- Regional and Store-Type Performance
+- Monthly Revenue and Profit Trends
+- Sales Channel Distribution
+- Payment Mode Distribution
+- Top 10 Performing Brands
+- Regional Return Analysis
+- Customer Membership Spending
+- Top Customers by Sales
+- Store Target Distribution
 
 ### Dashboard
 
@@ -108,36 +159,116 @@ The TrendKart dashboard provides a consolidated view of overall business perform
 
 The dashboard presents the major KPIs and visual analysis required to evaluate TrendKart's sales and business performance.
 
-## 9. Key Insights
+## 11. Key Insights
 
-| Area | Key Insight |
-|---|---|
-| Product | Women Sarees recorded the highest category sales at approximately ₹11.03 lakh. |
-| Region | South Zone 1 recorded the highest sales at approximately ₹44.63 lakh. |
-| Sales Channel | Offline sales contributed approximately ₹60.49 lakh. |
-| Payment | UPI recorded the highest sales contribution at approximately ₹26.19 lakh. |
-| Brand | Grt Jewellers recorded the highest sales at approximately ₹5.51 lakh. |
-| Membership | Regular members generated the highest sales contribution at approximately ₹29.74 lakh. |
-| Returns | Returned transactions represented approximately 4.87% of total transactions. |
-| Monthly Trend | October 2024 recorded the highest monthly sales at approximately ₹15.19 lakh. |
+### Product Performance
 
-## 10. Recommendations
+Women Sarees generated the highest category-level sales at approximately ₹11.03 lakh, followed by Handbags and Watches.
 
-| Business Area | Recommendation |
-|---|---|
-| Products | Maintain sufficient inventory for high-performing product categories. |
-| Regions | Study successful regional practices and improve lower-performing regions. |
-| Customers | Strengthen loyalty programs and targeted membership offers. |
-| Digital Sales | Improve online promotions and customer engagement. |
-| Payments | Continue promoting convenient digital payment options such as UPI. |
-| Returns | Analyze return reasons and improve product quality and communication. |
-| Seasonal Sales | Plan promotions around high-performing periods. |
-| Inventory | Use sales trends to improve inventory planning. |
+### Regional Performance
 
-## Conclusion
+South Zone 1 generated the highest sales at approximately ₹44.63 lakh, followed by South Zone 2 and South Zone 3.
 
-The TrendKart project demonstrates an end-to-end retail analytics workflow from business understanding,
- data profiling and cleaning to analysis, KPI development and dashboard creation.
+### Sales Channel Performance
 
-The final dashboard converts cleaned transaction data into actionable insights that can support 
-sales planning, customer engagement, inventory management and profitability improvement.
+Offline sales contributed approximately ₹60.49 lakh, while Online sales contributed approximately ₹31.78 lakh.
+
+### Payment Mode Performance
+
+UPI recorded the highest sales contribution at approximately ₹26.19 lakh, followed by Credit Card and Debit Card.
+
+### Brand Performance
+
+Grt Jewellers was the highest-performing brand with approximately ₹5.51 lakh in sales, followed by Aurelia and Max Fashion.
+
+### Customer Membership
+
+Regular members generated the highest sales contribution at approximately ₹29.74 lakh, followed by Silver and Gold members.
+
+### Return Performance
+
+Returned transactions represented approximately 4.87% of all transactions and accounted for around 6.23% of total sales value.
+
+### Monthly Performance
+
+October 2024 recorded the highest monthly sales at approximately ₹15.19 lakh, while January 2025 recorded the lowest monthly sales at approximately ₹3.05 lakh.
+
+## 12. Recommendations
+
+### Products
+
+Increase inventory availability for consistently high-performing product categories and brands.
+
+### Regions
+
+Study successful practices from South Zone 1 and apply relevant strategies to lower-performing regions.
+
+### Customers
+
+Strengthen loyalty programs and provide targeted offers based on membership and spending behavior.
+
+### Digital Sales
+
+Improve online promotions and customer engagement to increase the contribution of the online sales channel.
+
+### Payments
+
+Continue promoting UPI and other convenient digital payment options.
+
+### Returns
+
+Analyze major return reasons and improve product information, quality checks, and customer communication.
+
+### Seasonal Sales
+
+Plan targeted promotions around peak sales periods and investigate low-performing months.
+
+### Inventory
+
+Use category, brand, and sales trends to improve inventory planning and product availability.
+
+## 13. Tools & Techniques Used
+
+The project was developed using Microsoft Excel with the following tools and techniques:
+
+- Microsoft Excel
+- Excel Tables
+- Data Profiling
+- Data Cleaning
+- Data Validation
+- Data Standardization
+- Duplicate Identification
+- Missing-Value Identification
+- Find & Replace
+- Excel Formulas
+- Lookup Functions
+- Calculated Fields
+- Pivot Tables
+- PivotCharts
+- Aggregations
+- KPI Development
+- Slicers and Filters
+- Dashboard Design
+- Business Analysis
+- Insight Generation
+- Business Recommendations
+
+## 14. Project Workflow
+
+The complete project followed a structured analytics workflow:
+
+Business Understanding → Business Problem Definition → Data Collection → Data Profiling → Data Cleaning → Data Transformation → Exploratory Data Analysis → KPI Development → Pivot Analysis → Dashboard Development → Insights → Recommendations
+
+This workflow ensures that the final dashboard is supported by a clean and validated dataset and that the analysis is directly connected to business requirements.
+
+## 15. Project Outcome
+
+The project transformed raw retail transaction data into a structured analytical solution covering sales, profitability, customers, products, stores, regions, channels, payments, and returns.
+
+The final dashboard and analysis provide management with a clear understanding of business performance and highlight opportunities for improving sales, customer retention, inventory planning, digital adoption, and profitability.
+
+## 16. Conclusion
+
+TrendKart Fashion Enterprise demonstrates the end-to-end application of data analytics using Microsoft Excel.
+
+The project combines data profiling, data cleaning, KPI analysis, Pivot Tables, dashboard development, business insights, and recommendations to convert raw business data into actionable information for decision-making.
