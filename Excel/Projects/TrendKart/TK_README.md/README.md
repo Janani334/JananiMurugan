@@ -92,14 +92,15 @@ The analysis helped identify high-performing categories, regions, brands, custom
 
 ## 8. Key Performance Indicators (KPIs)
 
-The following four KPIs were developed and displayed on the Excel dashboard to monitor overall business performance:
+The following four KPIs were developed and displayed on the Excel dashboard to monitor overall business performance.
 
-| KPI | Result |
+| KPI | Dashboard Value |
 |---|---:|
-| Total Sales | ₹92,27,179.96 |
-| Total Profit | ₹18,01,437.12 |
-| Profit Margin | 19.52% |
-| Sales Transactions | 3,000 |
+| Total Sales | ₹12.85 Cr |
+| Total Profit | ₹2.31 Cr |
+| Avg. Order | ₹2,634 |
+| Return Rate | 3.92 % |
+
 
 ## 9. Dashboard Development
 
