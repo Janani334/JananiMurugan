@@ -104,7 +104,7 @@ The TrendKart dashboard provides a consolidated view of overall business perform
 
 ### Dashboard
 
-[View TrendKart Dashboard](Dashboard/)
+[View TrendKart Dashboard](../Dashboard/)
 
 The dashboard presents the major KPIs and visual analysis required to evaluate TrendKart's sales and business performance.
 
