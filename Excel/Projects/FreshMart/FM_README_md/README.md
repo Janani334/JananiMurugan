@@ -86,7 +86,7 @@ The dashboard presents key performance indicators and visual analysis covering m
 
 ### Dashboard
 
-![FreshMart Business Performance Dashboard](../Dashboard/FreshMart_Dashboard.png)
+![FreshMart Business Performance Dashboard](../Dashboard/FM_Dasboard_Final.png)
 
 ## 10. Key Insights
 
