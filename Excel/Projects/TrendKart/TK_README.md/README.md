@@ -1,7 +1,6 @@
 \# TrendKart Fashion Enterprise – Sales \& Business Analytics
 
 
-
 \## 1. Business Understanding
 
 
