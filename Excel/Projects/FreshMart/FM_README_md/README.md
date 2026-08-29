@@ -174,7 +174,7 @@ The dashboard brings together the major KPIs and visual analysis covering monthl
 
 
 
-!\[FreshMart Business Performance Dashboard](Dashboard/FreshMart\_Dashboard.png)
+!\[FreshMart Business Performance Dashboard](../Dashboard/FreshMart\_Dashboard.png)
 
 
 
