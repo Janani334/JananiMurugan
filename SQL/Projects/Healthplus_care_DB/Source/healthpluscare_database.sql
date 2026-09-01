@@ -4,6 +4,24 @@ CREATE DATABASE healthpluscare_db;
 # using the created db
 USE healthpluscare_db;
 
+# to find the avg condultation fee, ref , low  and high value
+select round(avg(consultation_fee)) As total_consultation_fee from specialists;
+# doctor's charges 
+SELECT specialist_id,
+       consultation_fee,
+       consultation_fee - (SELECT AVG(consultation_fee)
+                           FROM specialists) AS difference,
+       CASE
+           WHEN consultation_fee > (SELECT AVG(consultation_fee)
+                                    FROM specialists)
+           THEN 'Higher'
+           WHEN consultation_fee < (SELECT AVG(consultation_fee)
+                                    FROM specialists)
+           THEN 'Lower'
+           ELSE 'Same'
+       END AS status
+FROM specialists;
+
 # clinics table creation
 CREATE TABLE Clinics (
 clinic_id VARCHAR(6) NOT NULL,
