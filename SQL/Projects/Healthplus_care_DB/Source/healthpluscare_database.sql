@@ -22,6 +22,9 @@ SELECT specialist_id,
        END AS status
 FROM specialists;
 
+# select round(min(consultation_fee)) from specialists;
+# select round(max(consultation_fee)) from specialists;
+
 # clinics table creation
 CREATE TABLE Clinics (
 clinic_id VARCHAR(6) NOT NULL,
@@ -41215,6 +41218,10 @@ SELECT COUNT(*) FROM feedback;
 
 DESCRIBE specialists;
 
+SELECT SUM(consultation_fee)
+FROM members
+WHERE consultation_type IN ('telemedicine');
+
 # Questions and queries
 
 # 1. Display the first name, last name, city, and membership type of all members.
@@ -41240,6 +41247,17 @@ WHERE price>5000;
 SELECT * FROM consultations WHERE consultation_mode = 'Telemedicine';
 # (or the following only choose the consultation_id)
 SELECT consultation_id FROM consultations WHERE consultation_mode = 'Telemedicine';
+
+#calculated the count of consultation_mode
+SELECT 
+    c.consultation_mode,
+    COUNT(*) AS completed_consultations,
+    ROUND(SUM(s.consultation_fee), 2) AS total_consultation_fee
+FROM consultations c
+INNER JOIN specialists s
+    ON c.specialist_id = s.specialist_id
+WHERE c.status = 'Completed'
+GROUP BY c.consultation_mode;
 
 # 7. Display all lab tests whose status is Completed.
 SELECT * from lab_tests WHERE test_status = 'completed';
