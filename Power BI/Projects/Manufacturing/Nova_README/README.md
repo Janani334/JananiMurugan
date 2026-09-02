@@ -141,8 +141,9 @@ The final Power BI dashboard provides an interactive view of NovaTech's manufact
 - Purchase Orders by Supplier
 - Energy Consumption by Plant
 
-![NovaTech Manufacturing Performance Analytics Dashboard](assets/novatech_dashboard_hd.png)
+## Dashboard
 
+![NovaTech Manufacturing Performance Analytics Dashboard](assets/novatech_dashboard_hd.png)
 ---
 
 ## Key Insights
