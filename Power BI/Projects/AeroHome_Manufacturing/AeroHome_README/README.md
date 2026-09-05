@@ -144,7 +144,7 @@ Procurement expenditure was calculated to provide management with an overview of
 
 ## 9. Dashboard
 
-![AeroHome Manufacturing Performance & Operations Dashboard](Dashboard/AeroHome_Dashboard.png)
+![AeroHome Dashboard](Power%20BI/Projects/AeroHome_Manufacturing/Dashboard/AeroHome_Dashboard.png)
 
 ### Dashboard Visuals
 
