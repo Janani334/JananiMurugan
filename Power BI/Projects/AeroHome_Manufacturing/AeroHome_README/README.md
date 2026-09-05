@@ -215,3 +215,4 @@ The AeroHome Manufacturing Performance & Operations Dashboard demonstrates an en
 The project transforms operational data into meaningful KPIs and interactive visualizations covering production, quality, downtime, machine performance, and procurement.
 
 The dashboard enables management to identify production gaps, monitor quality and downtime, investigate machine performance, and prioritize areas for operational improvement.
+
