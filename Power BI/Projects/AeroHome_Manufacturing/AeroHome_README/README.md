@@ -144,7 +144,7 @@ Procurement expenditure was calculated to provide management with an overview of
 
 ## 9. Dashboard
 
-![AeroHome Dashboard](Dashboard/AeroHome_Dashboard.png)
+![AeroHome Manufacturing Performance & Operations Dashboard](Dashboard/AeroHome_Dashboard.png)
 
 ### Dashboard Visuals
 
@@ -199,10 +199,6 @@ Compares machine downtime with production output to identify machines requiring 
 - **Power Query**
 - **DAX**
 - **Microsoft Excel**
-
-### Skills Demonstrated
-
-Data Cleaning • Data Profiling • Data Transformation • Data Modeling • DAX • KPI Development • Data Visualization • Dashboard Development • Business Intelligence • Manufacturing Analytics • Operational Analysis • Insight Generation
 
 ---
 
