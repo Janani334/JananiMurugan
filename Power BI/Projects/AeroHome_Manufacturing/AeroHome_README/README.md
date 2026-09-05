@@ -144,7 +144,7 @@ Procurement expenditure was calculated to provide management with an overview of
 
 ## 9. Dashboard
 
-C:\Users\ELCOT\Desktop\JananiMurugan\Power BI\Projects\AeroHome_Manufacturing\Dashboard\AeroHome_Dashboard.png
+[Dashboard](Dashboard/AeroHome_Dashboard.png)
 
 ### Dashboard Visuals
 
