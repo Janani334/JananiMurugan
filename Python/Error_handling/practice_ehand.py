@@ -1,7 +1,8 @@
 # value error
 
-# i/p  = 20 , o/p =20
-# i/p = Twenty ,  o/p =Value error
+# i/p  = 45 , o/p =45
+# i/p = Fourty Five ,  o/p =Value error
+# because in 2nd i/p value is a string but actual code is ask for int value
 
 try:
    age=int(input("Enter age: "))
