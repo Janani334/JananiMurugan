@@ -75,4 +75,20 @@ for i in range(n):
     degree=input("Enter your Degree: ")
     stream=input("Enter your Stream: ")
     gender=input("Enter your Gender: ")
-print(f"Student name is:{name}\nage is: {age}\nroll_no is: {roll_no}\ndegree is: {degree}\nstream is: {stream}\ngender is: {gender}")
+    course_name=input("Enter Course_Name:")
+    course_code=input("Enter Course_Code:")
+    no_of_credits=input("Enter no_of_credits:")
+    course_duration=input("Enter Course_Duration:")
+print(f"Student name is:{name}\nage is: {age}\nroll_no is: {roll_no}\ndegree is: {degree}\nstream is: {stream}\ngender is: {gender}\ncourse_name: {course_name}\ncourse_code: {course_code}\n no_of_credits: {no_of_credits}\ncourse_duration: {course_duration}")
+print(f"""
+Student name is: {name}
+Age is: {age}
+Roll_no is: {roll_no}
+Degree is: {degree}
+Stream is: {stream}
+Gender is: {gender}
+course_name: {course_name}
+course_code: {course_code}
+no_of_credits: {no_of_credits}
+course_duration: {course_duration}
+""")
