@@ -1,0 +1,17 @@
+{
+  "student_id": "CS101",
+  "name": "Aadhav",
+  "department": "CSE",
+  "attendance": 80,
+  "courses": [
+    "Python",
+    "SQL",
+    "Power BI"
+  ],
+  "marks": {
+    "Python": 85,
+    "SQL": 90,
+    "Power BI": 78
+  },
+  "Present": "Yes"
+}
