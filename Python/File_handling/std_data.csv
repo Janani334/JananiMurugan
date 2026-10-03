@@ -1,5 +1,24 @@
+# import csv
+
+# data = [
+  #  ["Name", "Course"],
+  #  ["Janani", "Python"],
+  #  ["Arun", "SQL"],
+  #  ["Kavi", "Power BI"],
+  #  ["Meena", "Machine Learning"]
+# ]
+
+# with open("data.csv", "w", newline="") as file:
+  #  writer = csv.writer(file)
+  # writer.writerows(data)
+
+
+# This is my initial code for  creating csv file
+# If i'm  append , rewrite the file using cvss_handling.py file then it changes like the below
+
 Name,Dept
 Yaazhini,Animation
 Iniyazh,BE
 Anu,ME
 Raghavi,CSE
+Elsa,EEE

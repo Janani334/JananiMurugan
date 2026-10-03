@@ -77,3 +77,9 @@ with open(r"C:\Users\ELCOT\Desktop\JananiMurugan\Python\File_handling\std_data.c
       for student in stds:
             writer.writerow(student)
 
+
+# "a" -> append the row at last
+with open(r"C:\Users\ELCOT\Desktop\JananiMurugan\Python\File_handling\std_data.csv","a",newline="")as file:
+    # To add content in csv file
+       writer=csv.writer(file)
+       writer.writerow(["Elsa","EEE"])
