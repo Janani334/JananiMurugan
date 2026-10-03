@@ -28,18 +28,18 @@ except FileNotFoundError:
 try:
 
 # the try block wil execute when the file path is a file inside a folder.
-   with open(r"C:\Users\ELCOT\Desktop\JananiMurugan\Python\File_handling\prctcepanda.ipynb")as file:
+    with open(r"C:\Users\ELCOT\Desktop\JananiMurugan\Python\File_handling\prctcepanda.ipynb")as file:
 
 # the except block wil print when the file path is folder.Because it doesn't open directly a folder so it throws sum error
-   with open(r"C:\Users\ELCOT\Desktop\JananiMurugan\Python\Error_handling")as file:
+    # with open(r"C:\Users\ELCOT\Desktop\JananiMurugan\Python\Error_handling")as file:
 
-    data = file.read()
-    file.write()
-    # (or)
-   print(data)
+      data = file.read()
+    #   file.write()
+      # (or)
+    print(data)
 
 except PermissionError:
-  print("You can only read this file  and it can't be written")
+ print("You can only read this file  and it can't be written")
 
 
 

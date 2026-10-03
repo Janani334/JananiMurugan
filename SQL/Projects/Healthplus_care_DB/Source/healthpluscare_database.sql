@@ -4,26 +4,6 @@ CREATE DATABASE healthpluscare_db;
 # using the created db
 USE healthpluscare_db;
 
-# to find the avg condultation fee, ref , low  and high value
-select round(avg(consultation_fee)) As total_consultation_fee from specialists;
-# doctor's charges 
-SELECT specialist_id,
-       consultation_fee,
-       consultation_fee - (SELECT AVG(consultation_fee)
-                           FROM specialists) AS difference,
-       CASE
-           WHEN consultation_fee > (SELECT AVG(consultation_fee)
-                                    FROM specialists)
-           THEN 'Higher'
-           WHEN consultation_fee < (SELECT AVG(consultation_fee)
-                                    FROM specialists)
-           THEN 'Lower'
-           ELSE 'Same'
-       END AS status
-FROM specialists;
-
-# select round(min(consultation_fee)) from specialists;
-# select round(max(consultation_fee)) from specialists;
 
 # clinics table creation
 CREATE TABLE Clinics (
@@ -41402,3 +41382,186 @@ FROM specialists;
  PARTITION BY specialists.specialization ORDER BY  specialists.consultation_fee DESC
  ) AS rnk
  FROM specialists;
+ 
+ 
+ # PRESENTATION QUERIES
+ 
+SELECT 
+    consultation_mode,
+    status,
+    COUNT(*) AS consultation_count
+FROM consultations
+GROUP BY consultation_mode, status
+ORDER BY consultation_count DESC;
+
+# to find the avg condultation fee, ref , low  and high value
+select round(avg(consultation_fee)) As total_consultation_fee from specialists;
+# doctor's charges 
+SELECT specialist_id,
+       consultation_fee,
+       consultation_fee - (SELECT AVG(consultation_fee)
+                           FROM specialists) AS difference,
+       CASE
+           WHEN consultation_fee > (SELECT AVG(consultation_fee)
+                                    FROM specialists)
+           THEN 'Higher'
+           WHEN consultation_fee < (SELECT AVG(consultation_fee)
+                                    FROM specialists)
+           THEN 'Lower'
+           ELSE 'Same'
+       END AS status
+FROM specialists;
+
+ select round(min(consultation_fee)) from specialists; 
+ select round(max(consultation_fee)) from specialists;
+
+
+#  1. How much healthcare activity is being delivered? (tot_cons+completed_cons)
+SELECT 
+    COUNT(*) AS total_consultations,
+    SUM(CASE WHEN status = 'Completed' THEN 1 ELSE 0 END) AS completed_consultations
+FROM consultations;
+
+# 1.1 the following code shows top clinics
+SELECT 
+    cl.clinic_name,
+    COUNT(c.consultation_id) AS consultation_count
+FROM consultations c
+JOIN clinics cl
+    ON c.clinic_id = cl.clinic_id
+GROUP BY cl.clinic_id, cl.clinic_name
+ORDER BY consultation_count DESC
+LIMIT 5;
+# Insight: Which clinics are handling the highest consultation activity.
+# Recommendation: Review workload and resource allocation across high-activity clinics.
+
+
+# 2. How are members using the service network?
+SELECT 
+    m.member_id,
+    CONCAT(m.first_name, ' ', m.last_name) AS member_name,
+    m.membership_type,
+    COUNT(c.consultation_id) AS consultation_count
+FROM members m
+LEFT JOIN consultations c
+    ON m.member_id = c.member_id
+GROUP BY m.member_id, m.first_name, m.last_name, m.membership_type
+ORDER BY consultation_count DESC
+LIMIT 10;
+-- Insight: Shows member engagement intensity.
+-- Recommendation: Use member-usage patterns to understand engagement and service needs.
+
+
+#  4. How is telemedicine being adopted?
+
+-- Purpose: Measures virtual healthcare usage compared with overall consultations.
+
+SELECT
+    consultation_mode,
+    COUNT(*) AS consultation_count,
+    ROUND(
+        COUNT(*) * 100.0 / (SELECT COUNT(*) FROM consultations),
+        2
+    ) AS percentage
+FROM consultations
+GROUP BY consultation_mode;
+
+-- Telemedicine session status
+SELECT
+    session_status,
+    COUNT(*) AS session_count
+FROM telemedicine_sessions
+GROUP BY session_status
+ORDER BY session_count DESC;
+
+-- What it tells us:
+-- Shows the share of consultations using telemedicine and how those virtual sessions are progressing.
+
+-- Insight: Helps management understand virtual-care adoption and execution.
+-- Recommendation: Monitor telemedicine usage, session status and connection quality separately.
+
+# 4. 5. How satisfied are members?
+
+-- Purpose: Measures overall member satisfaction using feedback ratings.
+
+SELECT
+    ROUND(AVG(rating), 2) AS average_rating,
+    COUNT(feedback_id) AS total_feedback
+FROM feedback;
+
+
+#  total completed consultations in percentage
+SELECT 
+    COUNT(*) AS total_consultations,
+    SUM(CASE 
+            WHEN status = 'Completed' THEN 1 
+            ELSE 0 
+        END) AS completed_consultations,
+    ROUND(
+        100.0 * SUM(CASE 
+                        WHEN status = 'Completed' THEN 1 
+                        ELSE 0 
+                    END) / COUNT(*),
+        1
+    ) AS completed_percentage
+FROM consultations;
+
+# slide 8
+# Total bill  amt
+SELECT 
+    ROUND(SUM(total_amount), 2) AS total_billed_amount
+FROM billing;
+
+# Recorded payments
+SELECT 
+    payment_status,
+    COUNT(*) AS payment_count,
+    SUM(payment_amount) AS total_amount
+FROM payments
+GROUP BY payment_status;
+
+# total bill, paid total, collection_percentage
+SELECT
+    ROUND(
+        (SELECT SUM(total_amount)
+         FROM billing), 2
+    ) AS total_billed_amount,
+
+    ROUND(
+        (SELECT SUM(payment_amount)
+         FROM payments
+         WHERE payment_status = 'Success'), 2
+    ) AS total_successful_payment,
+
+    ROUND(
+        100 *
+        (SELECT SUM(payment_amount)
+         FROM payments
+         WHERE payment_status = 'Success')
+        /
+        (SELECT SUM(total_amount)
+         FROM billing),
+        1
+    ) AS collection_percentage;
+    
+
+# 3.How is billed value converting into payments?
+
+    SELECT
+    SUM(b.total_amount) AS Total_Billed,
+    SUM(p.payment_amount) AS Total_Paid,
+    SUM(b.total_amount) - SUM(p.payment_amount) AS Collection_Gap
+FROM Billing b
+LEFT JOIN Payments p
+    ON b.bill_id = p.bill_id
+WHERE p.payment_status = 'Success';
+
+
+# 3.1 How is billed value converting into payments?
+
+SELECT
+    bill_status,
+    COUNT(*) AS Number_of_Bills,
+    SUM(total_amount) AS Billed_Value
+FROM Billing
+GROUP BY bill_status;
