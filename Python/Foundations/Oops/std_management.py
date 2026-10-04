@@ -110,9 +110,6 @@ for i in range(len(stds)):
 # print(std2.display())
 
 
-
-
-
 # # print(type(std1))
 # # num=9
 # # print(type(num))
