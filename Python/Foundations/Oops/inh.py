@@ -26,27 +26,28 @@ class teacher(student):
 # and add a extra instance variable -subjects handled            
             self.sub_h=sub_h
 
+    # polymorphism
     def display_role(self):
         return "teacher"
 
-# # to print university student
-# p1=person("abc","abcd@gmail.com")
-# print(p1.display_role())
+# to print university student
+p1=person("abc","abcd@gmail.com")
+print(p1.display_role())
 
-# # to print as student
-# std1=student("Kani","kani@gmail.com","CSE")
-# print(std1.display_role())
+# to print as student
+std1=student("Kani","kani@gmail.com","CSE")
+print(std1.display_role())
 
-# # to display as teacher
-# t1=teacher("xyz","xyz@gmail.com","IT")
-# print(t1.display_role())
+# to display as teacher
+t1=teacher("xyz","xyz@gmail.com","IT","Python")
+print(t1.display_role())
 
-# # another method to  display it without using variable
-# print(person("abc", "abcd@gmail.com").display_role())
+# another method to  display it without using variable
+print(person("abc", "abcd@gmail.com").display_role())
 
-# print(student("Kani", "kani@gmail.com", "CSE").display_role())
+print(student("Kani", "kani@gmail.com", "CSE").display_role())
 
-# print(teacher("xyz", "xyz@gmail.com","IT").display_role())
+print(teacher("xyz", "xyz@gmail.com","IT","Python").display_role())
 
 # Another example
 people=[
