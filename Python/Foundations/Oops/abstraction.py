@@ -76,7 +76,10 @@ class hod(person):
     ...
 # you can create the parent class object directly:
 # p1 = person("abc", "abc@gmail.com")
-# print(p1.display_role())   .....]})
+# print(p1.display_role())   .....
+# so....
+# Without ABC → person() ✅
+# With ABC     → person() ❌]})
 
 
 std1=student("Kani","kani@gmail.com","CSE")
