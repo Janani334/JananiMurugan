@@ -121,7 +121,7 @@ The dashboard focuses on the following major metrics and dimensions:
 
 ### Dashboard
 
-![TrendKart Fashion Enterprise Dashboard](../Dashboard/TK_finaldb.png)
+![TrendKart Fashion Enterprise Dashboard](Dashboard/TK_Final_Dashboard.png)
 
 The dashboard presents the major KPIs and visual analysis required to evaluate TrendKart's sales and business performance.
 
