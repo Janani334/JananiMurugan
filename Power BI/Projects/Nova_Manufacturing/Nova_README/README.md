@@ -143,7 +143,8 @@ The final Power BI dashboard provides an interactive view of NovaTech's manufact
 
 ## Dashboard
 
-![NovaTech Manufacturing Performance Analytics Dashboard](../Dashboard/Novatech_Dashboard.png)
+![Nova Manufacturing Dashboard](../Dashboard/NT_Final_Dashboard.png)
+
 ---
 
 ## Key Insights
