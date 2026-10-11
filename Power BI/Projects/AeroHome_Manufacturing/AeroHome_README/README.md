@@ -146,6 +146,7 @@ Procurement expenditure was calculated to provide management with an overview of
 
 ![AeroHome Manufacturing Performance & Operations Dashboard](../Dashboard/AH_Final_Dashboard.png)
 
+
 ### Dashboard Visuals
 
 **Planned vs Produced Units**  
