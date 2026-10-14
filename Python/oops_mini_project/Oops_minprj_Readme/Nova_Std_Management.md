@@ -235,7 +235,7 @@ Add screenshots of the actual program output in the `screenshots` folder of the 
 
 ### Main Menu
 
-![Add Student Details](../iptopt_Sreenshots/Main_Menu.png)
+![Main Menu](screenshots/Main_Menu.png)
 
 ### Student Details
 
