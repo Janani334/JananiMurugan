@@ -233,9 +233,9 @@ If a requested student or faculty collection is empty, the application displays 
 
 Add screenshots of the actual program output in the `screenshots` folder of the repository. Replace the example filenames below with the exact image filenames you commit.
 
-### Main_Menu
+### Main Menu
 
-![Main_Menu](../iptopt_Sreenshots/Main_Menu.png)
+![Main Menu](../iptopt_Sreenshots/Main_Menu.png)
 
 ### Student Details
 
