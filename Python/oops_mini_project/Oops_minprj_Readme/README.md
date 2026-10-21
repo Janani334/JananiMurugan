@@ -1,5 +1,6 @@
 # Nova University Student Management System
 
+
 ## 1. Project Overview
 
 The Nova University Student Management System is a Python-based console application developed using Object-Oriented Programming (OOP) principles. It manages student and faculty information and supports basic academic calculations, examination eligibility checks, and result evaluation.
